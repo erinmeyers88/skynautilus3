@@ -44,8 +44,7 @@ module.exports = function () {
     
      require('./passport.js')(app);
     
-    app.use(passport.initialize());
-    app.use(passport.session());
+   
   
     
     // MIDDLEWARE THAT RUNS ONLY IN DEVELOPMENT

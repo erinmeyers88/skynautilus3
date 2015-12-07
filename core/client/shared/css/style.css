@@ -39,10 +39,21 @@ menu {
     flex-direction: row;
 	justify-content: space-between;
     line-height: 50px;
+    color: rgb(0, 0, 128)
 }
 
 .menuItem {
 	font-size: 20px;
+}
+
+a:link {
+    text-decoration: none;
+    color: rgb(0, 0, 128)
+}
+
+a:visited {
+    text-decoration: none;
+    color: rgb(0, 0, 128);
 }
 
 
@@ -120,7 +131,7 @@ datepicker select, datepicker select:focus, datepicker select:hover,
 #######################################*/
 
 .backgroundImage {
-	height: 570px;
+	height: 700px;
 	width: 100%;
 	background-image: url("/shared/img/nautilus2.jpg");
 	background-size: cover;

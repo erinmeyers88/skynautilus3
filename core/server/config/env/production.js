@@ -10,8 +10,8 @@ module.exports = {
         profileFields: ["emails"]
     },
      google: {
-        clientID: "",
-        clientSecret: "",
-        callbackURL: ""
+        clientID: "966117703920-ei16slc3jrpm4qib6pfg7h3200rv5q1q.apps.googleusercontent.com",
+        clientSecret: "TIj5KHI3QfUbTnXd-2-DENid",
+        callbackURL: "https://stark-fortress-1275.herokuapp.com/login/google/callback"
     }
 };

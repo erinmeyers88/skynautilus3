@@ -1,0 +1,27 @@
+{
+  "name": "skynautilus",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "angularjs-datepicker": "^0.2.15",
+    "body-parser": "^1.14.1",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.2.9",
+    "morgan": "^1.6.1",
+    "oauth": "^0.9.14",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.0.0",
+    "passport-google-oauth": "^0.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,866 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: auto;
+	width: 100%;
+    position: relative;
+    min-width: 1280px;
+}
+
+
+
+
+/*#####################################
+######## Menu #########
+#######################################*/
+
+menu {
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    position: fixed;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.menuInside {
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    position: absolute; 
+    width: 500px; 
+    right: 30px;
+	display: flex;
+    flex-direction: row;
+	justify-content: space-between;
+    line-height: 50px;
+}
+
+.menuItem {
+	font-size: 20px;
+}
+
+
+/*#####################################
+######## Changes to Datepicker #########
+#######################################*/
+
+
+datepicker select, datepicker select:focus, datepicker select:hover,
+.datepicker select, .datepicker select:focus, .datepicker select:hover,
+[datepicker] select, [datepicker] select:focus, [datepicker] select:hover{
+  width:100%;
+   overflow: hidden;
+   background:none;
+   color:#fff;
+   background-color: #000080;
+   border-radius:2px;
+   border: 0;
+   margin-top:5px;
+}
+
+._720kb-datepicker-calendar {
+  background: white;
+  color: #333;
+  position: absolute;
+  z-index: 999;
+  min-width: 220px;
+  margin: 0 auto;
+  width: 101%;
+  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+  visibility: hidden;
+  overflow:hidden;
+  margin-left:-0.5%;
+  padding: 0 0 2% 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  left: -35px;
+  top: -245px;
+}
+
+._720kb-datepicker-calendar-header:nth-child(odd) {
+  background: #000080;
+}
+._720kb-datepicker-calendar-header:nth-child(even) {
+  background: #000080;
+}
+
+/*Arrows*/
+._720kb-datepicker-calendar-header a, ._720kb-datepicker-calendar-header a:hover {
+  text-decoration:none;
+  padding:3% 9% 4% 9%;
+  font-size: 13.5px;
+  color: #fff;
+  font-weight: bold;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+/*Year*/
+._720kb-datepicker-calendar-month span {
+  font-size: 13px;
+  color: #fff;
+}
+
+._720kb-datepicker-default-button{
+  padding:0;
+}
+
+/*#####################################
+############# HOME PAGE ###############
+#######################################*/
+
+.backgroundImage {
+	height: 570px;
+	width: 100%;
+	background-image: url("/shared/img/nautilus2.jpg");
+	background-size: cover;
+	position: relative;
+
+}
+
+.formBackground {
+	border-radius: 5px;
+	position: absolute;
+	top: 160px;
+	left: 60px;
+	background-color: rgba(255, 255, 255, .3)
+	
+}
+
+
+/* Flight Search*/
+.flightSearch {
+	z-index: 1;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, .3);
+    padding: 30px 30px 20px 30px;
+    font: 14px Arial, Helvetica, sans-serif;
+    color: #000080;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.flightSearch h1 {
+    font: 18px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    padding: 10px 0px 10px 40px;
+    display: block;
+    margin: -30px -30px 10px -30px;
+    color: #FFF;
+    background: #000080;
+    border-radius: 5px 5px 0px 0px;
+    -webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+}
+
+.flightSearch h1>span {
+    display: block;
+    font-size: 11px;
+}
+
+
+
+.radioButtons label{
+    color: #000080;
+    font-size: 16px;
+}
+
+.flightSearch label {
+    display: block;
+    margin: 0px 0px 5px;
+   
+}
+.flightSearch label>span {
+    float: left;
+    margin-top: 10px;
+    color: #000080;
+    font-size: 16px;
+}
+
+.destination {
+    color: black;
+    height: 25px;
+    width: 150px;
+    border-radius: 5px;
+    margin-top: 7px;
+    border: 1px solid #E5E5E5;
+    background: #FBFBFB;
+    font: normal 14px/14px Arial, Helvetica, sans-serif;
+    text-align: center;
+    
+    
+}
+
+.date {
+    color: black;
+    height: 25px;
+    width: 100px;
+    border-radius: 5px;
+    margin-top: 7px;
+    border: 1px solid #E5E5E5;
+    background: #FBFBFB;
+    font: normal 14px/14px Arial, Helvetica, sans-serif;
+}
+
+
+.flightSearch select {
+    color: black;
+    height: 25px;
+    width: 50px;
+    border-radius: 5px;
+    margin-top: 7px;
+    border: 1px solid #E5E5E5;
+    background: #FBFBFB;
+    font: normal 14px/14px Arial, Helvetica, sans-serif;
+}
+
+.flightSearch .button {
+    background-color:#000080;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-border-radius: 5px;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 150px;
+}
+.flightSearch .button:hover {
+    background-color:#0000cc;
+}
+
+.submitSearch, .passengerInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
+    margin-top: 20px;
+    
+}
+
+.dateInput, .submitSearch, .passengerInput, .radioButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
+    
+}
+
+.dateInput label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.radioButtons, .passengerInput {
+    height: 25px;
+    
+}
+
+.radioButtons {
+    margin-top: 10px;
+    margin-bottom: 5px; 
+}
+
+.destinationInput {
+    height: 80px;
+}
+
+datepicker {
+    
+    display: flex;
+    justify-content: space-around;
+}
+
+datepicker input {
+    text-align: center;
+}
+
+.destinationInput label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 300px;
+    height: 80px;
+    
+}
+
+.passengerInput label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 200px;   
+}
+
+.title {
+    width: 500px;
+    height: 70px;
+	position: absolute;
+	top: 125px;
+    right: 130px;
+	color: #fff;
+    font-size: 75px;
+    font-family: Arial, Helvetica, sans-serif;
+    /*text-shadow: 0px 5px #000080;*/
+    text-align: center;
+    z-index: 5;
+}
+
+.titleBackground {
+    z-index: 1;
+    width: 585px;
+    height: 81px;
+	position: absolute;
+	top: 132px;
+    right: 0px;
+    background-color: #000080;
+    opacity: .6;
+}
+
+.catchyPhrase {
+    z-index: 1;
+    width: 300px;
+    height: 81px;
+	position: absolute;
+	top: 400px;
+    right: 15px;
+    color: #fff;
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+/*Login Modal*/
+#loginModal {
+     visibility: hidden; 
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background-color: rgba(0, 0, 128, .5);
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 18px;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+}
+
+.loginModalInside {
+     width: 300px;
+     height: 150px;
+     position: fixed;
+     top: 200px;
+     background-color: #fff;
+     border: 5px solid rgb(0, 0, 128);
+     border-radius: 5px;
+     padding: 15px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: center;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     
+}
+
+/*Load Results Modal*/
+#loadModal {
+     visibility: hidden; 
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background-color: rgba(0, 0, 128, .5);
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 18px;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+}
+
+.loadModalInside {
+     width: 300px;
+     height: 150px;
+     position: fixed;
+     top: 200px;
+     background-color: #fff;
+     border: 5px solid rgb(0, 0, 128);
+     border-radius: 5px;
+     padding: 15px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: center;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     
+}
+
+/*#####################################
+############# Search Results ###############
+#######################################*/
+
+/*Save Trip Modal*/
+#overlay {
+     visibility: hidden; 
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background-color: rgba(0, 0, 128, .5);
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 18px;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+}
+
+.overlayInside {
+     width: 500px;
+     height: 300px;
+     position: fixed;
+     top: 200px;
+     background-color: #fff;
+     border: 5px solid rgb(0, 0, 128);
+     border-radius: 5px;
+     padding: 15px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: center;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     
+}
+
+.modalLabel {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgb(0, 0, 128);
+    margin-bottom: 5px;
+}
+
+.chooseTrip select {
+  background: #FBFBFB;
+  border-radius: 5px;
+  margin-top: 7px;
+  border: 1px solid #E5E5E5;
+  height: 25px;
+  width: 150px;
+  padding: 0;
+}
+
+
+.tripNameInput {
+   display: flex;
+   flex-direction: column
+}
+
+.tripNameInputField {
+    color: black;
+    height: 25px;
+    width: 150px;
+    border-radius: 5px;
+    margin-top: 7px;
+    border: 1px solid #E5E5E5;
+    background: #FBFBFB;
+    font: normal 14px/14px Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.modalButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
+}
+
+.modalButton:hover {
+    background-color:#0000cc;
+}
+
+.modalButton {
+    height: 30px;
+	width: 100px;
+	margin: 0 auto;
+	background-color: rgb(0, 0, 128);
+    color: #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-border-radius: 5px;
+    font-size: 12px;
+    margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/*---Modify search button-----------*/
+
+.pageWrapper {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background-image: url("/shared/img/nautilus1.jpg");
+	background-repeat: repeat;
+    height: auto;
+    overflow-y: auto;
+}
+
+.modifySearch {
+    display: flex;
+    flex-direction: row;
+    width: 270px;
+	position: absolute;
+    right: 50px;
+	top: 100px;
+	justify-content: center;
+    margin-bottom: 20px;
+}
+
+.modifySearchButton {
+    height: 40px;
+	width: 150px;
+	border-radius: 5px;
+	margin: 0 auto;
+	background-color:#000080;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-border-radius: 5px;
+    border: 1px solid #fff;
+    color: #FFF;
+    font-size: 16px;
+}
+
+.modifySearchButton:hover {
+	background-color:#0000cc;
+}
+
+/*---Results listing-----------*/
+
+.listWrapper {
+	max-width: 70%;
+    min-width: 70%;
+	height: 100%;
+	position: relative;
+	left: 50px;
+	top: 100px;
+	justify-content: flex-start;
+}
+
+.searchResultsListing {
+    display: flex;
+    flex-direction: row;
+	margin-bottom: 15px;
+}
+
+.whiteBackground {
+    border: 1px solid rgb(0, 0, 128);
+	border-radius: 5px;
+	background-color: white;
+	opacity: .9;
+    max-width: 780px;
+    min-width: 780px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.outboundData, .returnData {
+    display: flex;
+    flex-direction: row;
+}
+
+.dataWrapper {
+    display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.buttonWrapper {
+    width: 20%;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.saveButtonDiv {
+	text-align: center;
+	width: 100%;
+	justify-content: center;
+}
+
+.saveButton {
+	height: 50px;
+	width: 80px;
+	border-radius: 5px;
+	margin: 0 auto;
+	background-color:#000080;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-border-radius: 5px;
+    border: 1px solid #fff;
+    color: #FFF;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+.saveButton:hover {
+	background-color:#0000cc;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	text-align: left;
+	width: 130px;
+	text-indent: 5px;
+	justify-content: flex-start;
+}
+
+.rightSection {
+    display: flex;
+    flex-direction: row;
+}
+
+.label {
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+	background-color: rgb(0, 0, 128);
+	border-bottom: 2px solid black;
+	line-height: 25px;
+	border-right: 1px solid white;
+}
+
+.lastLabel {
+    border-right: none;
+}
+
+.tripLabel {
+   line-height: 20px;
+   font-size: 14px;
+   color: #fff;
+   background-color: #0000cc;
+   margin-top: 3px;
+}
+
+.secondRow {
+	margin-top: 5px;
+	margin-bottom: 3px;
+
+}
+
+.thirdRow {
+	margin-bottom: 3px;
+}
+
+.fourthRow {
+	margin-bottom: 3px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.bigCell {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 25px;
+	text-indent: 0;
+	text-align: center;
+	flex-grow: 2;
+}
+
+.passengers {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-indent: 0;
+	text-align: center;
+	flex-grow: 2;
+	font-size: 20px;
+}
+
+
+
+
+.fakelabel {
+	font-weight: bold;
+	color: white;
+	background-color: rgb(0, 0, 128);
+	border-bottom: 2px solid black;
+	height: 25px;
+	border-right: 1px solid white;
+}
+
+
+
+div p {
+	line-height: 20px;
+	margin: 0;
+}
+
+/*div {
+	border: 1px solid black;
+}*/
+
+
+/*Modify Search Modal*/
+
+
+#modifySearchModal {
+     visibility: hidden; 
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background-color: rgba(0, 0, 128, .5);
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 18px;
+}
+
+.modifySearchInside {
+     width: 500px;
+     height: 300px;
+     position: absolute;
+     top: 200px;
+     margin: 0 auto;
+     background-color: #fff;
+     border: 5px solid rgb(0, 0, 128);
+     border-radius: 5px;
+     padding: 15px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: center;
+     
+}
+
+
+/*########################
+#########Filter##########
+##########################*/
+
+.filterWrapper {
+	display: flex;
+	flex-direction: column;
+	align-content: flex-start;
+	position: absolute;
+	right: 50px;
+	top: 175px;
+	min-height: 300px;
+	width: 270px;
+    border: 1px solid #fff;
+	border-radius: 5px;
+	background-color: white;
+	opacity: .9;
+}
+
+.filterLabel {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	color: white;
+	background-color: rgb(0, 0, 128);
+	margin-bottom: 5px;
+	line-height: 30px;
+	height: 30px;
+	text-align: center;
+    border-radius: 5px;
+}
+
+.filters {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: space-around;
+}
+
+.originFilter, .airlineFilter {
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	
+	margin-top: 10px;
+	margin-bottom: 10px;
+	line-height: 25px;
+	text-align: center;
+	min-height: 100px;
+}
+
+.airlineFilter {
+	margin-bottom: 30px;
+}
+
+.smallFilterLabel {
+	margin-bottom: 5px;
+    background-color: rgb(0, 0, 128);
+    color: #fff;
+    border-radius: 5px;
+}
+
+.chipSection {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.airlineChip {
+	height: 30px;
+	width: 125px;
+	margin: 0 auto;
+	background-color: rgb(0, 0, 128);
+    color: #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-border-radius: 5px;
+    font-size: 12px;
+    margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}

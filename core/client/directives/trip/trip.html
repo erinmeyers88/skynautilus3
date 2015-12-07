@@ -1,0 +1,143 @@
+<div class="searchResultsListing">
+	<div class="whiteBackground">
+		<div class="dataWrapper">
+			<!--OUTBOUND---------------------------------------------------------------->
+			<div class="outboundData">
+				<div class="column">
+					<div class="label">Departing</div>
+					<div class="tripLabel" ng-show="isShown('roundtrip')">Outbound</div>
+					<div ng-repeat="segment in item.slice[0].segment">
+						<div ng-repeat="leg in segment.leg">
+							<div class="secondRow bold">{{leg.origin}}</div>
+							<div class="thirdRow">{{leg.cleanDepartureTime | date: 'h:mm a' }}</div>
+							<div class="fourthRow">{{leg.cleanDepartureTime | date: 'MMM d, y'}}</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="column">
+					<div class="label">Arriving</div>
+					<div class="tripLabel" ng-show="isShown('roundtrip')">
+						<br>
+					</div>
+					<div ng-repeat="segment in item.slice[0].segment">
+						<div ng-repeat="leg in segment.leg">
+							<div class="secondRow bold">{{leg.destination}}</div>
+							<div class="thirdRow">{{leg.cleanArrivalTime | date: 'h:mm a'}}</div>
+							<div class="fourthRow">{{leg.cleanArrivalTime | date: 'MMM d, y'}}</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="column">
+					<div class="label">Flight</div>
+					<div class="tripLabel" ng-show="isShown('roundtrip')">
+						<br>
+					</div>
+					<div ng-repeat="segment in item.slice[0].segment">
+						<div class="secondRow bold">{{segment.flight.carrier}}</div>
+						<div class="thirdRow">{{segment.flight.number}}</div>
+						<div class="fourthRow">
+							<br>
+						</div>
+					</div>
+				</div>
+
+				<div class="column">
+					<div class="label">Duration</div>
+					<div class="tripLabel" ng-show="isShown('roundtrip')">
+						<br>
+					</div>
+					<div ng-repeat="segment in item.slice[0].segment">
+						<div class="secondRow">
+							<br>
+						</div>
+						<div ng-repeat="leg in segment.leg" class="thirdRow">{{leg.cleanDuration}}</div>
+						<div class="fourthRow">
+							<br>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+			<!--RETURN---------------------------------------------------------------->
+
+			<div class="returnData" ng-show="isShown('roundtrip')">
+
+				<div class="column">
+					<div class="tripLabel">Return</div>
+					<div ng-repeat="segment in item.slice[1].segment">
+						<div ng-repeat="leg in segment.leg">
+							<div class="secondRow bold">{{leg.origin}}</div>
+							<div class="thirdRow">{{leg.cleanDepartureTime | date: 'h:mm a' }}</div>
+							<div class="fourthRow">{{leg.cleanDepartureTime | date: 'MMM d, y'}}</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="column">
+					<div class="tripLabel">
+						<br>
+					</div>
+					<div ng-repeat="segment in item.slice[1].segment">
+						<div ng-repeat="leg in segment.leg">
+							<div class="secondRow bold">{{leg.destination}}</div>
+							<div class="thirdRow">{{leg.cleanArrivalTime | date: 'h:mm a'}}</div>
+							<div class="fourthRow">{{leg.cleanArrivalTime | date: 'MMM d, y'}}</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="column">
+					<div class="tripLabel">
+						<br>
+					</div>
+					<div ng-repeat="segment in item.slice[1].segment">
+						<div class="secondRow bold">{{segment.flight.carrier}}</div>
+						<div class="thirdRow">{{segment.flight.number}}</div>
+						<div class="fourthRow">
+							<br>
+						</div>
+					</div>
+				</div>
+
+				<div class="column">
+					<div class="tripLabel">
+						<br>
+					</div>
+					<div ng-repeat="segment in item.slice[1].segment">
+						<div class="secondRow">
+							<br>
+						</div>
+						<div ng-repeat="leg in segment.leg" class="thirdRow">{{leg.cleanDuration}}</div>
+						<div class="fourthRow">
+							<br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="rightSection">
+			<div class="column" ng-repeat="pricing in item.pricing">
+				<div class="label">Passengers</div>
+				<div class="secondRow bold passengers">{{pricing.passengers.adultCount}}</div>
+			</div>
+
+			<div class="column">
+				<div class="label lastLabel">Price</div>
+				<div class="bigCell bold">{{item.saleTotal}}</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="buttonWrapper">
+		<div class="column saveButtonDiv">
+			<input type="button" class="saveButton" value="Save to&#13;&#10;Trips" ng-click="showHideModal(); setSelectedItinerary(item)"
+			/>
+		</div>
+	</div>
+</div>

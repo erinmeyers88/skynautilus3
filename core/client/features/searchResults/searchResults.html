@@ -1,0 +1,291 @@
+<menu></menu>
+
+
+<div class="pageWrapper">
+
+	<div class="modifySearch">
+		<input type="button" class="modifySearchButton" value="Modify Search" ng-click="getUserSearch(); showHideModifySearchModal()" />
+	</div>
+
+	<div class="listWrapper">
+
+		<div class="searchResultsListing" ng-repeat="listing in searchResults.flightListings track by $index">
+			<div class="whiteBackground">
+				<div class="dataWrapper">
+					<!--OUTBOUND---------------------------------------------------------------->
+					<div class="outboundData">
+						<div class="column">
+							<div class="label">Departing</div>
+							<div class="tripLabel" ng-show="isShown('roundtrip')">Outbound</div>
+							<div ng-repeat="segment in listing.slice[0].segment">
+								<div ng-repeat="leg in segment.leg">
+									<div class="secondRow bold">{{leg.origin}}</div>
+									<div class="thirdRow">{{leg.cleanDepartureTime | date: 'h:mm a' }}</div>
+									<div class="fourthRow">{{leg.cleanDepartureTime | date: 'MMM d, y'}}</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="column">
+							<div class="label">Arriving</div>
+							<div class="tripLabel" ng-show="isShown('roundtrip')">
+								<br>
+							</div>
+							<div ng-repeat="segment in listing.slice[0].segment">
+								<div ng-repeat="leg in segment.leg">
+									<div class="secondRow bold">{{leg.destination}}</div>
+									<div class="thirdRow">{{leg.cleanArrivalTime | date: 'h:mm a'}}</div>
+									<div class="fourthRow">{{leg.cleanArrivalTime | date: 'MMM d, y'}}</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="column">
+							<div class="label">Flight</div>
+							<div class="tripLabel" ng-show="isShown('roundtrip')">
+								<br>
+							</div>
+							<div ng-repeat="segment in listing.slice[0].segment">
+								<div class="secondRow bold">{{segment.flight.carrier}}</div>
+								<div class="thirdRow">{{segment.flight.number}}</div>
+								<div class="fourthRow">
+									<br>
+								</div>
+							</div>
+						</div>
+
+						<div class="column">
+							<div class="label">Duration</div>
+							<div class="tripLabel" ng-show="isShown('roundtrip')">
+								<br>
+							</div>
+							<div ng-repeat="segment in listing.slice[0].segment">
+								<div class="secondRow">
+									<br>
+								</div>
+								<div ng-repeat="leg in segment.leg" class="thirdRow">{{leg.cleanDuration}}</div>
+								<div class="fourthRow">
+									<br>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+					<!--RETURN---------------------------------------------------------------->
+
+					<div class="returnData" ng-show="isShown('roundtrip')">
+
+						<div class="column">
+							<div class="tripLabel">Return</div>
+							<div ng-repeat="segment in listing.slice[1].segment">
+								<div ng-repeat="leg in segment.leg">
+									<div class="secondRow bold">{{leg.origin}}</div>
+									<div class="thirdRow">{{leg.cleanDepartureTime | date: 'h:mm a' }}</div>
+									<div class="fourthRow">{{leg.cleanDepartureTime | date: 'MMM d, y'}}</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="column">
+							<div class="tripLabel">
+								<br>
+							</div>
+							<div ng-repeat="segment in listing.slice[1].segment">
+								<div ng-repeat="leg in segment.leg">
+									<div class="secondRow bold">{{leg.destination}}</div>
+									<div class="thirdRow">{{leg.cleanArrivalTime | date: 'h:mm a'}}</div>
+									<div class="fourthRow">{{leg.cleanArrivalTime | date: 'MMM d, y'}}</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="column">
+							<div class="tripLabel">
+								<br>
+							</div>
+							<div ng-repeat="segment in listing.slice[1].segment">
+								<div class="secondRow bold">{{segment.flight.carrier}}</div>
+								<div class="thirdRow">{{segment.flight.number}}</div>
+								<div class="fourthRow">
+									<br>
+								</div>
+							</div>
+						</div>
+
+						<div class="column">
+							<div class="tripLabel">
+								<br>
+							</div>
+							<div ng-repeat="segment in listing.slice[1].segment">
+								<div class="secondRow">
+									<br>
+								</div>
+								<div ng-repeat="leg in segment.leg" class="thirdRow">{{leg.cleanDuration}}</div>
+								<div class="fourthRow">
+									<br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="rightSection">
+					<div class="column" ng-repeat="pricing in listing.pricing">
+						<div class="label">Passengers</div>
+						<div class="secondRow bold passengers">{{pricing.passengers.adultCount}}</div>
+					</div>
+
+					<div class="column">
+						<div class="label lastLabel">Price</div>
+						<div class="bigCell bold">{{listing.saleTotal}}</div>
+					</div>
+
+				</div>
+
+
+
+
+			</div>
+
+			<div class="buttonWrapper">
+				<div class="column saveButtonDiv">
+					<input type="button" class="saveButton" value="Save to&#13;&#10;Trips" ng-click="showHideSaveModal(); setSelectedItinerary(listing)"
+					/>
+				</div>
+			</div>
+
+
+
+
+		</div>
+
+
+		
+
+
+		
+
+	</div>
+	<!---------------Filter-------------------->
+	<div class="filterWrapper">
+
+
+			<div class="filterLabel">Filter Search Results</div>
+			<div class="filters">
+
+				<div class="originFilter">
+					<div class="smallFilterLabel">Origin</div>
+					<div class="chipSection">
+						<div class="airlineChip" ng-repeat="city in searchResults.cities">{{city.name}}</div>
+					</div>
+				</div>
+
+
+				<div class="airlineFilter">
+					<div class="smallFilterLabel">Airline</div>
+					<div class="chipSection">
+						<div class="airlineChip" ng-repeat="airline in searchResults.airlines">{{airline.name}}</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+</div>
+
+
+<!---------------------Save to Trip Modal------------------------->
+
+<div id="overlay">
+	<div class="overlayInside">
+
+		<div class="chooseTrip">
+			<div class="modalLabel">Choose Trip</div>
+			<label>
+				<select name="selection" type="number" ng-model="tripName"></select>
+			</label>
+		</div>
+
+		<div class="modalButton" ng-click="newTripInputShown = !newTripInputShown">NEW TRIP</div>
+
+
+
+		<label class="tripNameInput" ng-show="newTripInputShown">
+			<span class="modalLabel">Trip Name:</span>
+			<input type="string" ng-model="tripName" class="tripNameInputField" />
+		</label>
+
+
+
+		<div class="modalButtons">
+			<div class="modalButton" ng-click="showHideSaveModal()">CANCEL</div>
+			<div class="modalButton" ng-click="addTrip()">SAVE</div>
+		</div>
+
+	</div>
+</div>
+
+<!-------------------------Modify Search Modal------------------------>
+
+<div id="modifySearchModal">
+	<div class="modifySearchInside">
+		<div class="formBackground">
+			<form action="" method="post" class="flightSearch searchForm">
+				<h1>Search Flights</h1>
+				<!--Trip Type-->
+				<div class="radioButtons">
+					<label>One-way
+						<input id="oneway" type="radio" name="name" ng-model="tripType" value="oneway" />
+					</label>
+					<label>Round-trip
+						<input id="roundtrip" type="radio" name="name" ng-model="tripType" value="roundtrip" />
+					</label>
+				</div>
+				<!--Destination-->
+				<div class="destinationInput">
+					<label>
+						<span>Destination:</span>
+						<input list="airports" type="string" ng-model="destination" class="destination" />
+					</label>
+				</div>
+				<datalist id="airports"></datalist>
+				<!--Departure Date-->
+				<div class="dateInput">
+					<label>
+						<span>Depart:</span>
+						<datepicker date-year-title="selected title" date-format="yyyy-MM-dd">
+							<input type="string" ng-model="departureDate" class="date" />
+						</datepicker>
+					</label>
+					<!--Return Date-->
+					<label ng-show="isShown('roundtrip')">
+						<span>Return:</span>
+						<datepicker date-year-title="selected title" date-format="yyyy-MM-dd">
+							<input type="string" ng-model="returnDate" class="date" />
+						</datepicker>
+					</label>
+				</div>
+				<!--Passengers-->
+				<div class="passengerInput">
+					<label>
+						<span>Passengers:</span>
+						<select name="selection" type="number" ng-model="passengerCount">
+							<option value=1>1</option>
+							<option value=2>2</option>
+							<option value=3>3</option>
+							<option value=4>4</option>
+						</select>
+					</label>
+				</div>
+				<!--Search Button-->
+				<div class="submitSearch">
+					<label>
+						<input type="button" class="button" value="Search" ng-click="search()" />
+					</label>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

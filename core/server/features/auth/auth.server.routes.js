@@ -21,17 +21,17 @@ module.exports = function (app) {
         }));
 
 
-    // FACEBOOK AUTHENTICATION AND REDIRECTION
-    app.route('/login/facebook')
-        .get(passport.authenticate('facebook', {
-            scope: ['email']
-        }));
+    // // FACEBOOK AUTHENTICATION AND REDIRECTION
+    // app.route('/login/facebook')
+    //     .get(passport.authenticate('facebook', {
+    //         scope: ['email']
+    //     }));
 
-    app.route('/login/facebook/callback')
-        .get(passport.authenticate('facebook', {
-            successRedirect: '/',
-            failure: '/'
-        }));
+    // app.route('/login/facebook/callback')
+    //     .get(passport.authenticate('facebook', {
+    //         successRedirect: '/',
+    //         failure: '/'
+    //     }));
 
 
     // // ROOT OF THE APPLICATION

@@ -17,11 +17,4 @@ function HomeController ($scope, flightSearchService, $state) {
       // $scope.goToSearchResults();
     };
     
-
-    //Shows or hides login modal
-    $scope.showHideLoginModal = function () {
-      var el = document.getElementById("loginModal");
-      el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
-    };
-    
   }

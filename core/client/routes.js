@@ -17,11 +17,7 @@ angular.module("skyNautilus")
 				// 		return flightSearchService.getSearchResultsFinal();
 				// 	} 
 				// }
-			})
-			
-			.state("login"), {
-				url: "/login/google",
-			};
+			});
 		
 		$urlRouterProvider.otherwise("/home");
 		

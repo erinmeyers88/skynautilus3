@@ -890,7 +890,12 @@ div p {
     align-items: center;
 }
 
-.tripNameSection {
+.tripListing {
+    display: flex;
+    flex-direction: row;
+}
+
+.tripInfoSection {
     width: 300px;
     height: 50px;
     display: flex;
@@ -904,6 +909,14 @@ div p {
     background-color: rgb(0, 0, 128);
     border: 1px solid rgb(0, 0, 128);
     border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.deleteTrip {
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
 }

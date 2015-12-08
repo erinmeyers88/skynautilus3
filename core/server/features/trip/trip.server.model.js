@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var TripModel = mongoose.Schema({
-	
+	user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
 	name: {type: String, required: true},
 	itineraries : [{
 		saleTotal: {type: String},
@@ -27,7 +27,7 @@ var TripModel = mongoose.Schema({
 });
 	
 	
-module.exports = mongoose.model("trip", TripModel);
+module.exports = mongoose.model("Trip", TripModel);
 
 
 

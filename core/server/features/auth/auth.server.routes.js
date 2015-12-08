@@ -39,17 +39,6 @@ module.exports = function (app) {
     //     }));
 
 
-    // // ROOT OF THE APPLICATION
-    // app.route('/')
-    //     .get(function (req, res) {
-    //         res.render('index', {
-    //             userJSON: req.user,
-    //             userStr: JSON.stringify(req.user)
-    //         });
-    //     });
-
-
-
     // // AUXILIARY ENDPOINTS
 
     // // checking if logged-in

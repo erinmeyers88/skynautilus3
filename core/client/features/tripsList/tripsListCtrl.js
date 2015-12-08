@@ -1,5 +1,6 @@
 angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flightSearchService, tripService, authService) {
 
+	//Get authed user
 	var getUser = function () {
 		authService.authedUser().then(function (data) {
 			$scope.authedUser = data;
@@ -33,4 +34,19 @@ angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flig
 	$scope.getTrips();
 
 
+
+	$scope.deleteTrip = function (tripId) {
+		tripService.deleteTrip(tripId).then(function (response) {
+			$scope.getTrips();
+		});
+	};
+	
+	
+	$scope.getSelectedTrip = function (trip) {
+		console.log("getting trip", trip.name);
+		tripService.getSelectedTrip(trip);
+	};
+	
+	
+	
 });

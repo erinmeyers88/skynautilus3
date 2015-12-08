@@ -1,10 +1,11 @@
 <menu></menu>
 <div class="tripList" ng-repeat="trip in trips">
-	<div class="tripNameSection">
+	<div class="tripListing">
+	<div class="tripInfoSection" ng-click="getSelectedTrip(trip)">
 		<div>{{trip.name}}</div>
 		<div ng-repeat="itinerary in trip.itinerary"></div>
 		<div class="tripPrice">${{trip.totalPrice}}</div>
-		
 	</div>
-	
+	<input type="button" class="deleteTrip" ng-click="deleteTrip(trip._id)" value="DELETE"></input>
+	</div>
 </div>

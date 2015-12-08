@@ -1,20 +1,21 @@
 angular.module("skyNautilus")
-  .controller("searchResultsCtrl", function ($scope, flightSearchService, tripService) {
+  .controller("searchResultsCtrl", function ($scope, flightSearchService, tripService, authService) {
     
-    // //Loads the search results from the API call, sets trip type
-    // $scope.getsearchResults = function () {
-    //   $scope.searchResults = loadResults;
-    // }();
-    
-   
-    
+    //Get authed user
+   	var getUser = function () {
+      authService.authedUser().then(function (data) {
+        $scope.authedUser = data;
+        console.log($scope.authedUser);
+      });
+    };
+
+    getUser();
+
+    //Load search results
+
     $scope.searchResults = flightSearchService.getFinalSearchResults();
-    
-     console.log($scope.searchResults);
-    
-    // flightSearchService.getFinalSearchResults().then(function (response) {
-    //   $scope.searchResults = response;
-    // });
+
+    console.log($scope.searchResults);
     
     
     //Determines whether to show depart and return labels
@@ -62,28 +63,25 @@ angular.module("skyNautilus")
 
     $scope.addTrip = function () {
 
-      console.log($scope.selectedItinerary);
+      
 
       $scope.itineraryToSave.name = $scope.tripName;
 
       $scope.itineraryToSave.itineraries = [];
       $scope.itineraryToSave.itineraries.push($scope.selectedItinerary);
 
-      var trip = $scope.itineraryToSave;
-      
-      trip.userId = $scope.user._id;
-      
-      console.log($scope.itineraryToSave);
+      $scope.itineraryToSave.user = $scope.authedUser._id;
 
+      console.log("Logging itinerary to save", $scope.itineraryToSave);
       
-      
-      tripService.addTrip(trip).then(function (response) {
+      tripService.addTrip($scope.itineraryToSave).then(function (response) {
         return response;
       });
-      
+
       $scope.showHideSaveModal();
-      
+
     };
+
 
 
 

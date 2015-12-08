@@ -6,9 +6,13 @@ module.exports = function (app) {
 	app.route("/api/trips")
 		.post(Ctrl.addTrip)
 		.get(Ctrl.getTrips);
-	// 	.delete(Ctrl.deleteTrip);
-	
-	// app.route("/api/trips/:id")
-	// 	.get(Ctrl.getTrip);
-			
+
+
+
+	app.route("/api/trips/:tripId")
+		.delete(Ctrl.deleteTrip);
+		
+	app.route("/api/trips/:tripName")	
+		.get(Ctrl.getTrip);
+
 };

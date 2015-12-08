@@ -1,5 +1,10 @@
+<menu></menu>
 <div class="tripList" ng-repeat="trip in trips">
 	<div class="tripNameSection">
-		{{trip.name}}
+		<div>{{trip.name}}</div>
+		<div ng-repeat="itinerary in trip.itinerary"></div>
+		<div class="tripPrice">${{trip.totalPrice}}</div>
+		
 	</div>
+	
 </div>

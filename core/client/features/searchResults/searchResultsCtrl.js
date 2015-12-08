@@ -69,9 +69,15 @@ angular.module("skyNautilus")
       $scope.itineraryToSave.itineraries = [];
       $scope.itineraryToSave.itineraries.push($scope.selectedItinerary);
 
+      var trip = $scope.itineraryToSave;
+      
+      trip.userId = $scope.user._id;
+      
       console.log($scope.itineraryToSave);
 
-      tripService.addTrip($scope.itineraryToSave).then(function (response) {
+      
+      
+      tripService.addTrip(trip).then(function (response) {
         return response;
       });
       

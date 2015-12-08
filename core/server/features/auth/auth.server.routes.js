@@ -4,7 +4,7 @@ var config = require('../../config/config'),
 
 module.exports = function (app) {
 
-	// GOOGLE AUTHENTICATION AND REDIRECTION
+    // GOOGLE AUTHENTICATION AND REDIRECTION
     app.route('/login/google')
         .get(passport.authenticate('google', {
             session: false,
@@ -20,6 +20,11 @@ module.exports = function (app) {
             failure: '/'
         }));
 
+    app.route("/getautheduser")
+        .get(function (req, res) {
+            res.status(200).json(req.user);
+            console.log("Grabbing req.user", req.user);
+        });
 
     // // FACEBOOK AUTHENTICATION AND REDIRECTION
     // app.route('/login/facebook')

@@ -12,16 +12,17 @@ module.exports = {
 				res.send(result);
 			}
 		});
-	}
+	},
 
-	// getTrips: function (req, res) {
-	// 	.find(function (err, result) {
-	// 		if (err) {
-	// 			return res.status(500).send(err);
-	// 		} else {
-	// 			res.send(result);
-	// 		}
-	// 	});
+	getTrips: function (req, res) {
+		Trip.find({}, function (err, result) {
+			if (err) {
+				return res.status(500).send(err);
+			} else {
+				res.send(result);
+			}
+		});
+	}
 	
 	
 	

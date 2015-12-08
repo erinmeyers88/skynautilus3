@@ -17,6 +17,12 @@ angular.module("skyNautilus")
 				// 		return flightSearchService.getSearchResultsFinal();
 				// 	} 
 				// }
+			})
+			
+			.state("mytrips", {
+				url: "/mytrips",
+				templateUrl: "features/tripsList/tripsList.html",
+				controller: "tripsListCtrl"
 			});
 		
 		$urlRouterProvider.otherwise("/home");

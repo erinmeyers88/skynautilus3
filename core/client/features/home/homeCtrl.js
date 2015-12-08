@@ -1,6 +1,6 @@
 angular.module("skyNautilus").controller("homeCtrl", HomeController);
 
-function HomeController ($scope, flightSearchService, $state) {
+function HomeController ($scope, flightSearchService, $state, $http) {
 	
     $scope.userInput = {};
   
@@ -14,7 +14,7 @@ function HomeController ($scope, flightSearchService, $state) {
     //Search
     $scope.search = function () {
       flightSearchService.search($scope.userInput);
-      // $scope.goToSearchResults();
     };
     
+   
   }

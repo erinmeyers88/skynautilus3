@@ -26,7 +26,6 @@ module.exports = {
 
 	deleteTrip: function (req, res) {
 		Trip.findByIdAndRemove(req.params.tripId, function (err, result) {
-			console.log("selected trip", req.params.tripId);
 			if (err) {
 			return res.status(500).send(err);
 			} else {
@@ -36,11 +35,12 @@ module.exports = {
 	},
 
 	getTrip: function (req, res) {
-		Trip.findById(req.params.tripId).then(function (trip, err) {
+		
+		Trip.findOne({name: req.params.tripName}, function (err, trip) {
 			if (err) {
 				res.status(500).send(err);
 			} else {
-				res.send(trip);
+				res.json(trip);
 			}
 		});
 	}

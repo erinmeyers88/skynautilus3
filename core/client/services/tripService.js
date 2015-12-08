@@ -1,5 +1,5 @@
 angular.module("skyNautilus")
-	.service("tripService", function ($http, $state) {
+	.service("tripService", function ($http, $location) {
 		
 		
 		//Add trip///////////
@@ -40,31 +40,20 @@ angular.module("skyNautilus")
 		var selectedTrip = {};
 
 		this.getSelectedTrip = function (trip) {
-			console.log("logging this trip:", trip);
-			
-			function getTrip(trip) {
-				return $http({
-					method: "GET",
-					url: "/api/trips/" + trip.name
-				}).then(function (response) {
-					console.log("returning selected trip", response);
-					selectedTrip =  response.data;
-				});
-			}
-			
-			getTrip();
-			
-			function goToTrip (trip) {
-				$state.go("mytrips/" + trip.name);
-			}
-			
-			goToTrip();	
+			var endpoint = "/api/trips/" + trip.name;
+			return $http({
+				method: "GET",
+				url: endpoint
+			}).then(function (response) {
+				selectedTrip = response.data;
+				$location.path("/mytrips/" + trip.name);
+			});
 		};
-		
-		
+
+
 		this.displaySelectedTrip = function () {
-			return selectedTrip;	
+			return selectedTrip;
 		};
-		
+
 
 	});

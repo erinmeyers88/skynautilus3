@@ -3,7 +3,7 @@ angular.module("skyNautilus")
 	  
 	  $scope.selectedTrip = tripService.displaySelectedTrip();
     
-	  console.log($scope.selectedTrip);
+	  console.log("logging selected trip in controller", $scope.selectedTrip);
 	  
 	  
 	  

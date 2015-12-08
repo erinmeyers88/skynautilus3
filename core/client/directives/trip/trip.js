@@ -3,6 +3,6 @@ angular.module("skyNautilus")
 
 		return {
 			restrict: "E",
-			templateUrl: "directives/trip/trip.html",
+			templateUrl: "/directives/trip/trip.html",
 		};
 	});

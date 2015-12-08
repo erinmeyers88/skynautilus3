@@ -20,10 +20,10 @@ angular.module("skyNautilus")
 				controller: "tripsListCtrl"
 			})
 			
-			.state("mytrips/:tripName", {
+			.state("tripdetails", {
 				url: "/mytrips/:tripName",
 				templateUrl: "features/trip/trip.html",
-				controller: "tripsCtrl"
+				controller: "tripCtrl"
 			});
 		
 		

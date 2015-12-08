@@ -4,7 +4,6 @@ angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flig
 	var getUser = function () {
 		authService.authedUser().then(function (data) {
 			$scope.authedUser = data;
-			console.log(data);
 		});	
 	};
 
@@ -25,7 +24,6 @@ angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flig
 					});
 				});
 			});
-			console.log($scope.trips);
 		});
 	};
 	

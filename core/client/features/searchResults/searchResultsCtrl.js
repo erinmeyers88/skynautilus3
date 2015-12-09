@@ -63,7 +63,9 @@ angular.module("skyNautilus")
 
     $scope.addTrip = function () {
 
+      $scope.itineraryToSave.tripType = $scope.searchResults.tripType;
       
+      console.log($scope.itineraryToSave.tripType);
 
       $scope.itineraryToSave.name = $scope.tripName;
 

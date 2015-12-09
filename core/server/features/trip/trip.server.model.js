@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var TripModel = mongoose.Schema({
 	user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
 	name: {type: String, required: true, unique: true},
+	tripType: {type: String},
 	itineraries : [{
 		saleTotal: {type: String},
 		slice: [{

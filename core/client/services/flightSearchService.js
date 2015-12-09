@@ -147,7 +147,7 @@ function FlightSearchService($http, $state) {
 	};	
 	
 	this.getFinalSearchResults = function () {
-		return finalSearchResults
+		return finalSearchResults;
 	};
 	
 	

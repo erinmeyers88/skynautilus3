@@ -138,11 +138,15 @@ datepicker select, datepicker select:focus, datepicker select:hover,
 
 }
 
+.alignForm {
+    position: absolute;
+    top: 160px;
+    left: 60px; 
+}
+
 .formBackground {
 	border-radius: 5px;
-	position: absolute;
-	top: 160px;
-	left: 60px;
+	position: relative;
 	background-color: rgba(255, 255, 255, .3)
 	
 }
@@ -250,7 +254,7 @@ datepicker select, datepicker select:focus, datepicker select:hover,
     margin-top: 10px;
     width: 150px;
 }
-.flightSearch .button:hover {
+.button:hover {
     background-color:#0000cc;
 }
 
@@ -617,6 +621,9 @@ datepicker input {
      transform: translate(-50%, -50%);
 }
 
+.modifySearchModalButton {
+    width: 100px;
+}
 
 
 
@@ -884,6 +891,11 @@ div p {
 /*/////////////////////////
 /////My Trips Section//////
 //////////////////////////*/
+
+.myTripsWrapper {
+    display: flex;
+    flex-direction: column;
+}
 
 .tripList {
     position: relative;

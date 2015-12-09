@@ -1,5 +1,5 @@
 angular.module("skyNautilus")
-  .controller("searchResultsCtrl", function ($scope, flightSearchService, tripService, authService, $location) {
+  .controller("searchResultsCtrl", function ($scope, flightSearchService, tripService, authService, $location, $state) {
     
     //Get current url
     $scope.url = $location.absUrl();
@@ -30,22 +30,31 @@ angular.module("skyNautilus")
       return tripType === $scope.searchResults.tripType;
     };
 
+    $scope.isShownModifyModal = function (tripType) {
+      return tripType === $scope.tripType;
+    };
+    
+    
+    
+    
+    
     
     
     
     //Retreive user input to be able to repopulate the modify search form 
     $scope.getUserInput = function () {
       $scope.userInput = flightSearchService.getUserInput();
-      console.log("logging user input on ctrl", $scope.userInput);
-
       $scope.tripType = $scope.userInput.tripType;
       $scope.destination = $scope.userInput.destination;
       $scope.departureDate = $scope.userInput.departureDate;
       $scope.returnDate = $scope.userInput.returnDate;
       $scope.passengerCount = $scope.userInput.passengerCount.toString();
     };
-    
-    
+
+
+
+
+
     $scope.showReturnDate = function () {
       return $scope.userInput.tripType === 'roundtrip';
     };
@@ -53,11 +62,17 @@ angular.module("skyNautilus")
 
     //Search
     $scope.search = function () {
-      flightSearchService.search($scope.userInput);
+      $scope.newUserInput = {
+        tripType: $scope.tripType,
+        destination: $scope.destination,
+        departureDate: $scope.departureDate,
+        returnDate: $scope.returnDate,
+        passengerCount: $scope.passengerCount,
+      };
+      console.log("logging newUserInput", $scope.newUserInput);
+      flightSearchService.search($scope.newUserInput);
     };
    
-   
-
 
     //Shows or hides save trip modal
 
@@ -77,11 +92,6 @@ angular.module("skyNautilus")
       $scope.getUserInput();
       var a = document.getElementById("modifySearchModal");
       a.style.visibility = (a.style.visibility == "visible") ? "hidden" : "visible";
-
-      var b = document.querySelector(".formBackground");
-      b.style.position = "relative";
-      b.style.top = "0px";
-      b.style.left = "0px";
     };
     
     

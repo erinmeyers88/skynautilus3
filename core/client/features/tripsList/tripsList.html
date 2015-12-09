@@ -1,4 +1,7 @@
 <menu></menu>
+
+<div class="myTripsWrapper">
+
 <div class="tripList" ng-repeat="trip in trips">
 	<div class="tripListing">
 	<div class="tripInfoSection" ng-click="getSelectedTrip(trip)">
@@ -8,4 +11,6 @@
 	</div>
 	<input type="button" class="deleteTrip" ng-click="deleteTrip(trip._id)" value="DELETE"></input>
 	</div>
+</div>
+
 </div>

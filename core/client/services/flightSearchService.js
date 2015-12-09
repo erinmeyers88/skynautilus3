@@ -1,10 +1,11 @@
 angular.module("skyNautilus").service("flightSearchService", FlightSearchService);
 
-function FlightSearchService($http, $state) {
+function FlightSearchService($http, $state, $location) {
 
 	
+
 	var userInputObject = {};
-	
+
 	var finalSearchResults = {};
 
 
@@ -12,23 +13,29 @@ function FlightSearchService($http, $state) {
 	///Search function////////////////////////////////////////////////////		
 	
 	
-	function goToSearchResults () {
+	function goToSearchResults() {
+		console.log($location.path());
+		if ($location.path() !== "/searchresults") {
 			$state.go("searchresults");
 			console.log("Changing states");
-		};
-		
-	function showHideLoadResultsModal () {
-      var el = document.getElementById("loadModal");
-      el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+		} else {
+			console.log("refreshing state");
+			$state.go("searchresults", {}, { reload: true });
+		}
+	};
+
+	function showHideLoadResultsModal() {
+		var el = document.getElementById("loadModal");
+		el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
     };
-  
-	
+
+
 	this.search = function (userInput) {
-		
+
 		userInputObject = userInput;
-		
+
 		console.log("logging user input on service", userInput);
-		
+
 		showHideLoadResultsModal();
 
 		var origins = ["PDX"],
@@ -40,33 +47,33 @@ function FlightSearchService($http, $state) {
 				airlines: [],
 				flightListings: []
 			};
-		
+
 		find(index);
-					
-		function find (index) {
-			
+
+		function find(index) {
+
 			var requestBody = angular.toJson(buildRequestBody(origins[index], userInput));
-			
+
 			submitGoogleSearch(requestBody, userInput)
 				.then(function (response) {
 					console.log("Logging response:", response);
 					addToResults(response);
 					if (index < length) {
 						index++;
-						find (index);							
+						find(index);
 					} else {
 						finalSearchResults = searchResults;
 						console.log("Search results:", searchResults);
 						goToSearchResults();
 						return searchResults;
-					} 
+					}
 				},
-				function (err) {
-					console.log(err);
-				});			
+					function (err) {
+						console.log(err);
+					});
 		}
-		
-		function addToResults (results) {			
+
+		function addToResults(results) {			
 
 			// cities //
 			searchResults.cities = searchResults.cities.concat(results.header.city);
@@ -83,13 +90,13 @@ function FlightSearchService($http, $state) {
 				NK: "Spirit",
 				F9: "Frontier"
 			};
-			
+
 			results.header.carrier.forEach(function (airline) {
 				airline.code = airline.code.replace(/AS|US|VX|B6|UA|WS|NK|F9/gi, function (code) {
 					return airlineCodes[code];
 				});
 			});
-			
+
 			searchResults.airlines = searchResults.airlines.concat(results.header.carrier);
 			
 
@@ -110,39 +117,39 @@ function FlightSearchService($http, $state) {
 						delete option3.bookingCodeCount;
 						delete option3.cabin;
 						delete option3.connectionDuration;
-						
+
 						delete option3.id;
 						delete option3.kind;
 						delete option3.marriedSegmentGroup;
-						
+
 						var m = option3.duration % 60;
 						var h = (option3.duration - m) / 60;
 						option3.cleanDuration = h.toString() + ":" + (m < 10 ? "0" : "") + m.toString();
-						
+
 						delete option3.duration;
-						
+
 						option3.flight.carrier = option3.flight.carrier.replace(/AS|US|VX|B6|UA|WS|NK|F9/gi, function (code) {
 							return airlineCodes[code];
 						});
 						option3.leg.forEach(function (option4) {
 							delete option4.$$hashKey;
 							delete option4.aircraft;
-							
+
 							delete option4.destinationTerminal;
 							delete option4.meal;
-							
+
 							delete option4.id;
 							delete option4.kind;
 							delete option4.mileage;
 							delete option4.onTimePerformance;
 							delete option4.secure;
-								
+
 							option4.cleanDepartureTime = new Date(option4.departureTime);
 							option4.cleanArrivalTime = new Date(option4.arrivalTime);
 							var min = option4.duration % 60;
 							var hour = (option4.duration - min) / 60;
 							option4.cleanDuration = hour.toString() + ":" + (min < 10 ? "0" : "") + min.toString();
-							
+
 							delete option4.arrivalTime;
 							delete option4.departureTime;
 							delete option4.duration;
@@ -150,18 +157,17 @@ function FlightSearchService($http, $state) {
 					});
 				});
 			});
-			
+
 			searchResults.flightListings = searchResults.flightListings.concat(results.tripOptions);
-	}				
-	};	
-	
+		}
+	};
+
 	this.getFinalSearchResults = function () {
 		return finalSearchResults;
 	};
-	
+
 	this.getUserInput = function () {
-		console.log("logging user input in getuserinput service", userInputObject);
-		return userInputObject;	
+		return userInputObject;
 	};
 	
 	
@@ -176,16 +182,16 @@ function FlightSearchService($http, $state) {
 	
 	
 	//////HTTP POST request for flight info//////////////////////////////////
-	function submitGoogleSearch (searchBody, userInput) {
-		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCL0ZLFUF5_SsrocXX6ZKSaRlonngvd9cE';
+	function submitGoogleSearch(searchBody, userInput) {
+		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAFEjs778GYWjvMrYyuzPLk5eLAqtqLfdA';
 		return $http.post(endpoint, searchBody).then(function (response) {
-			return { header: response.data.trips.data, tripOptions: response.data.trips.tripOption };			
+			return { header: response.data.trips.data, tripOptions: response.data.trips.tripOption };
 		});
 	}
-	
+
 	function buildRequestBody(origin, userInput) {
 		userInput.passengerCount = +userInput.passengerCount;
-		
+
 		var requestBody = {
 			request: {
 				passengers: {
@@ -221,30 +227,30 @@ function FlightSearchService($http, $state) {
 				solutions: 50
 			}
 		};
-	
-	if (userInput.tripType === "roundtrip") {
-		requestBody.request.slice.push(
-			{
-				kind: "qpxexpress#sliceInput",
-				origin: userInput.destination,
-				destination: origin,
-				date: userInput.returnDate,
-				maxStops: 10,
-				maxConnectionDuration: 1440,
-				preferredCabin: "",
-				permittedDepartureTime: {
-					kind: "qpxexpress#timeOfDayRange",
-					earliestTime: "",
-					latestTime: ""
-				},
-				permittedCarrier: [""],
-				alliance: "",
-				prohibitedCarrier: [""]
-			}
-		);
+
+		if (userInput.tripType === "roundtrip") {
+			requestBody.request.slice.push(
+				{
+					kind: "qpxexpress#sliceInput",
+					origin: userInput.destination,
+					destination: origin,
+					date: userInput.returnDate,
+					maxStops: 10,
+					maxConnectionDuration: 1440,
+					preferredCabin: "",
+					permittedDepartureTime: {
+						kind: "qpxexpress#timeOfDayRange",
+						earliestTime: "",
+						latestTime: ""
+					},
+					permittedCarrier: [""],
+					alliance: "",
+					prohibitedCarrier: [""]
+				}
+				);
+		}
+
+		return requestBody;
 	}
-			
-	return requestBody;
-}
 
 }

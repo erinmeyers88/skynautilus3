@@ -9,7 +9,7 @@
 
 	<div class="listWrapper">
 
-		<div class="searchResultsListing" ng-repeat="listing in searchResults.flightListings track by $index">
+		<div class="searchResultsListing" ng-repeat="listing in searchResults.flightListings">
 			<div class="whiteBackground">
 				<div class="dataWrapper">
 					<!--OUTBOUND---------------------------------------------------------------->
@@ -170,8 +170,6 @@
 	</div>
 	<!---------------Filter-------------------->
 	<div class="filterWrapper">
-
-
 			<div class="filterLabel">Filter Search Results</div>
 			<div class="filters">
 
@@ -260,7 +258,7 @@
 						</datepicker>
 					</label>
 					<!--Return Date-->
-					<label ng-show="isShown('roundtrip')">
+					<label ng-show="isShownModifyModal('roundtrip')">
 						<span>Return:</span>
 						<datepicker date-year-title="selected title" date-format="yyyy-MM-dd">
 							<input type="string" ng-model="returnDate" class="date" />
@@ -282,10 +280,21 @@
 				<!--Search Button-->
 				<div class="submitSearch">
 					<label>
-						<input type="button" class="button" value="Search" ng-click="showHideModifySearchModal(); search()" />
+						<input type="button" class="button modifySearchModalButton" value="Cancel" ng-click="showHideModifySearchModal()">
+						<input type="button" class="button modifySearchModalButton" value="Search" ng-click="search()"/>
 					</label>
 				</div>
 			</form>
 		</div>
+	</div>
+</div>
+
+
+<!---------------------Load Results Modal------------------------->
+
+<div id="loadModal">
+	<div class="loadModalInside">
+        <div class="modalLabel">Finding Flights</div>
+        <img src="/shared/img/plane.GIF" alt="">
 	</div>
 </div>

@@ -3,7 +3,7 @@ angular.module("skyNautilus")
     
     //Get current url
     $scope.url = $location.absUrl();
-    
+
     $scope.showNewSearch = function () {
       return $scope.url !== "/#/home";
     };
@@ -29,14 +29,35 @@ angular.module("skyNautilus")
     $scope.isShown = function (tripType) {
       return tripType === $scope.searchResults.tripType;
     };
+
+    
     
     
     //Retreive user input to be able to repopulate the modify search form 
     $scope.getUserInput = function () {
       $scope.userInput = flightSearchService.getUserInput();
       console.log("logging user input on ctrl", $scope.userInput);
+
+      $scope.tripType = $scope.userInput.tripType;
+      $scope.destination = $scope.userInput.destination;
+      $scope.departureDate = $scope.userInput.departureDate;
+      $scope.returnDate = $scope.userInput.returnDate;
+      $scope.passengerCount = $scope.userInput.passengerCount.toString();
     };
     
+    
+    $scope.showReturnDate = function () {
+      return $scope.userInput.tripType === 'roundtrip';
+    };
+    
+
+    //Search
+    $scope.search = function () {
+      flightSearchService.search($scope.userInput);
+    };
+   
+   
+
 
     //Shows or hides save trip modal
 
@@ -56,7 +77,7 @@ angular.module("skyNautilus")
       $scope.getUserInput();
       var a = document.getElementById("modifySearchModal");
       a.style.visibility = (a.style.visibility == "visible") ? "hidden" : "visible";
-      
+
       var b = document.querySelector(".formBackground");
       b.style.position = "relative";
       b.style.top = "0px";
@@ -78,7 +99,7 @@ angular.module("skyNautilus")
     $scope.addTrip = function () {
 
       $scope.itineraryToSave.tripType = $scope.searchResults.tripType;
-      
+
       console.log($scope.itineraryToSave.tripType);
 
       $scope.itineraryToSave.name = $scope.tripName;
@@ -89,7 +110,7 @@ angular.module("skyNautilus")
       $scope.itineraryToSave.user = $scope.authedUser._id;
 
       console.log("Logging itinerary to save", $scope.itineraryToSave);
-      
+
       tripService.addTrip($scope.itineraryToSave).then(function (response) {
         return response;
       });

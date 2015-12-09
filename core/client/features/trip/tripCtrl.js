@@ -1,5 +1,22 @@
 angular.module("skyNautilus")
-	.controller("tripCtrl", function ($scope, flightSearchService, tripService) {
+	.controller("tripCtrl", function ($scope, flightSearchService, tripService, authService, $location) {
+
+		//Get current url
+		$scope.url = $location.absUrl();
+
+		$scope.showNewSearch = function () {
+			return $scope.url !== "/#/home";
+		};
+		//Get authed user
+		var getUser = function () {
+			authService.authedUser().then(function (data) {
+				$scope.authedUser = data;
+			});
+		};
+
+		getUser();
+
+
 
 		$scope.selectedTrip = tripService.displaySelectedTrip();
 

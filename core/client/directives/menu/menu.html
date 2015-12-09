@@ -1,6 +1,6 @@
 <div class="menuInside">
-	<div ui-sref="home" class="menuItem">Home</div>
-	<div class="menuItem" ui-sref="mytrips">My Trips</div>
-	<a class="menuItem" href="login/google">Login</a>
-	<!--<div ui-sref="" class="menuItem">Logout</div>-->
+	<div ui-sref="home" class="menuItem" ng-show="showNewSearch()">New Search</div>
+	<div class="menuItem" ui-sref="mytrips" ng-show="authedUser">My Trips</div>
+	<a class="menuItem" href="login/google" ng-show="!authedUser">Login</a>
+	<a href="logout" class="menuItem" ng-show="authedUser">Logout</a>
 </div>

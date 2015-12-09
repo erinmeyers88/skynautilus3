@@ -28,12 +28,10 @@ menu {
 }
 
 .menuInside {
-    width: 100%;
     height: 50px;
     margin: 0;
     padding: 0;
     position: absolute; 
-    width: 500px; 
     right: 30px;
 	display: flex;
     flex-direction: row;
@@ -44,6 +42,7 @@ menu {
 
 .menuItem {
 	font-size: 20px;
+    margin-left: 30px;
 }
 
 a:link {
@@ -166,7 +165,9 @@ datepicker select, datepicker select:focus, datepicker select:hover,
 
 .flightSearch h1 {
     font: 18px "Trebuchet MS", Arial, Helvetica, sans-serif;
-    padding: 10px 0px 10px 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
     display: block;
     margin: -30px -30px 10px -30px;
     color: #FFF;
@@ -566,7 +567,6 @@ datepicker input {
 	width: 150px;
 	border-radius: 5px;
 	margin: 0 auto;
-	background-color:#000080;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-border-radius: 5px;
@@ -578,6 +578,47 @@ datepicker input {
 .modifySearchButton:hover {
 	background-color:#0000cc;
 }
+
+/*Modify Search Modal*/
+
+#modifySearchModal {
+     visibility: hidden; 
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width: 100%;
+     height: 100%;
+     text-align:center;
+     z-index: 1000;
+     background-color: rgba(0, 0, 128, .5);
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 18px;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+}
+
+.modifySearchInside {
+     position: fixed;
+     top: 400px;
+     width: 330px;
+     height: 358px;
+     background-color: #fff;
+     border: 5px solid rgb(0, 0, 128);
+     border-radius: 5px;
+     padding: 15px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: center;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+}
+
+
+
 
 /*---Results listing-----------*/
 
@@ -754,42 +795,6 @@ div p {
 /*div {
 	border: 1px solid black;
 }*/
-
-
-/*Modify Search Modal*/
-
-
-#modifySearchModal {
-     visibility: hidden; 
-     position: absolute;
-     left: 0px;
-     top: 0px;
-     width:100%;
-     height:100%;
-     text-align:center;
-     z-index: 1000;
-     background-color: rgba(0, 0, 128, .5);
-     font-family: Arial, Helvetica, sans-serif;
-     font-size: 18px;
-}
-
-.modifySearchInside {
-     width: 500px;
-     height: 300px;
-     position: absolute;
-     top: 200px;
-     margin: 0 auto;
-     background-color: #fff;
-     border: 5px solid rgb(0, 0, 128);
-     border-radius: 5px;
-     padding: 15px;
-     text-align: center;
-     display: flex;
-     flex-direction: column;
-     justify-content: space-around;
-     align-items: center;
-     
-}
 
 
 /*########################

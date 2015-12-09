@@ -1,20 +1,36 @@
 angular.module("skyNautilus").controller("homeCtrl", HomeController);
 
-function HomeController ($scope, flightSearchService, $state, $http) {
+function HomeController($scope, flightSearchService, $state, $http, authService, $location) {
 	
-    $scope.userInput = {};
-  
-    //Toggles oneway or roundtrip search option display
-    $scope.userInput.tripType = "roundtrip";
+  //Get current url
+  $scope.url = $location.absUrl();
 
-    $scope.showReturnDate = function () {
-      return $scope.userInput.tripType === 'roundtrip';
-    };
+  $scope.showNewSearch = function () {
+    return $scope.url === "/#/home";
+  };
+  
+  //Get authed user
+  var getUser = function () {
+    authService.authedUser().then(function (data) {
+      $scope.authedUser = data;
+    });
+  };
+
+  getUser();
+
+  $scope.userInput = {};
+  
+  //Toggles oneway or roundtrip search option display
+  $scope.userInput.tripType = "roundtrip";
+
+  $scope.showReturnDate = function () {
+    return $scope.userInput.tripType === 'roundtrip';
+  };
     
-    //Search
-    $scope.search = function () {
-      flightSearchService.search($scope.userInput);
-    };
-    
-   
-  }
+  //Search
+  $scope.search = function () {
+    flightSearchService.search($scope.userInput);
+  };
+
+
+}

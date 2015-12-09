@@ -1,5 +1,12 @@
 angular.module("skyNautilus")
-  .controller("searchResultsCtrl", function ($scope, flightSearchService, tripService, authService) {
+  .controller("searchResultsCtrl", function ($scope, flightSearchService, tripService, authService, $location) {
+    
+    //Get current url
+    $scope.url = $location.absUrl();
+    
+    $scope.showNewSearch = function () {
+      return $scope.url !== "/#/home";
+    };
     
     //Get authed user
    	var getUser = function () {
@@ -24,9 +31,10 @@ angular.module("skyNautilus")
     };
     
     
-    //Retreive user search to be able to repopulate the modify search form 
-    $scope.getUserSearch = function () {
-      $scope.userSearch = flightSearchService.getUserInput();
+    //Retreive user input to be able to repopulate the modify search form 
+    $scope.getUserInput = function () {
+      $scope.userInput = flightSearchService.getUserInput();
+      console.log("logging user input on ctrl", $scope.userInput);
     };
     
 
@@ -42,11 +50,17 @@ angular.module("skyNautilus")
     
     $scope.newTripInputShown = false;
     
-    //Shows or hides modify trip modal
+    //Shows or hides modify search modal
 
     $scope.showHideModifySearchModal = function () {
-      var el = document.getElementById("modifySearchModal");
-      el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+      $scope.getUserInput();
+      var a = document.getElementById("modifySearchModal");
+      a.style.visibility = (a.style.visibility == "visible") ? "hidden" : "visible";
+      
+      var b = document.querySelector(".formBackground");
+      b.style.position = "relative";
+      b.style.top = "0px";
+      b.style.left = "0px";
     };
     
     

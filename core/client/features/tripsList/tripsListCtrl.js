@@ -1,15 +1,25 @@
-angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flightSearchService, tripService, authService) {
+angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flightSearchService, tripService, authService, $location) {
+
+	  //Get current url
+    $scope.url = $location.absUrl();
+
+    $scope.showNewSearch = function () {
+		return $scope.url !== "/#/home";
+    };
+
+	console.log($scope.showNewSearch());
 
 	//Get authed user
 	var getUser = function () {
 		authService.authedUser().then(function (data) {
 			$scope.authedUser = data;
-		});	
+		});
 	};
 
 	getUser();
-	
-	
+
+
+
 
 	$scope.getTrips = function () {
 		tripService.getTrips().then(function (response) {
@@ -26,8 +36,8 @@ angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flig
 			});
 		});
 	};
-	
-	
+
+
 
 	$scope.getTrips();
 
@@ -38,13 +48,13 @@ angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flig
 			$scope.getTrips();
 		});
 	};
-	
-	
+
+
 	$scope.getSelectedTrip = function (trip) {
 		console.log("getting trip", trip.name);
 		tripService.getSelectedTrip(trip);
 	};
-	
-	
-	
+
+
+
 });

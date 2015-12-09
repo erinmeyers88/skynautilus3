@@ -39,7 +39,7 @@ module.exports = function (app) {
     //     }));
 
 
-    // // AUXILIARY ENDPOINTS
+    // AUXILIARY ENDPOINTS
 
     // // checking if logged-in
     // app.route('/auth/checklogin')
@@ -51,12 +51,13 @@ module.exports = function (app) {
     //     });
 
 
-    // // logging-out
-    // app.route('/auth/logout')
-    //     .get(function (req, res) {
-    //         req.logout();
-    //         res.redirect('/');
-    //     });
+    // logging-out
+    app.route('/logout')
+        .get(function (req, res) {
+            req.logout();
+            console.log(req.user);
+            res.redirect('/');
+        });
 
 
     // // protecting routes

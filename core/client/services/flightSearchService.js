@@ -2,7 +2,12 @@ angular.module("skyNautilus").service("flightSearchService", FlightSearchService
 
 function FlightSearchService($http, $state) {
 
+	
+	var userInputObject = {};
+	
 	var finalSearchResults = {};
+
+
 
 	///Search function////////////////////////////////////////////////////		
 	
@@ -20,9 +25,13 @@ function FlightSearchService($http, $state) {
 	
 	this.search = function (userInput) {
 		
+		userInputObject = userInput;
+		
+		console.log("logging user input on service", userInput);
+		
 		showHideLoadResultsModal();
 
-		var origins = ["PDX", "LAX", "SFO"],
+		var origins = ["PDX"],
 			length = origins.length - 1,
 			index = 0,
 			searchResults = {
@@ -150,8 +159,10 @@ function FlightSearchService($http, $state) {
 		return finalSearchResults;
 	};
 	
-	
-	
+	this.getUserInput = function () {
+		console.log("logging user input in getuserinput service", userInputObject);
+		return userInputObject;	
+	};
 	
 	
 	// helper functions //
@@ -166,7 +177,7 @@ function FlightSearchService($http, $state) {
 	
 	//////HTTP POST request for flight info//////////////////////////////////
 	function submitGoogleSearch (searchBody, userInput) {
-		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAFSQP3ClWoPPShBYApLfxjazl-1WsKpu8';
+		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCL0ZLFUF5_SsrocXX6ZKSaRlonngvd9cE';
 		return $http.post(endpoint, searchBody).then(function (response) {
 			return { header: response.data.trips.data, tripOptions: response.data.trips.tripOption };			
 		});

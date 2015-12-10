@@ -108,6 +108,21 @@ function FlightSearchService($http, $state, $location) {
 				delete option1.id;
 				delete option1.kind;
 				// delete option1.pricing;
+				option1.pricing.forEach(function (priceobject) {
+					delete priceobject.$$hashkey;
+					delete priceobject.baseFareTotal;
+					delete priceobject.fare;
+					delete priceobject.fareCalculation;
+					delete priceobject.kind;
+					delete priceobject.latestTicketingTime;
+					delete priceobject.passengers.kind;
+					delete priceobject.ptc;
+					delete priceobject.saleFareTotal;
+					delete priceobject.saleTaxTotal;
+					delete priceobject.saleTotal;
+					delete priceobject.segmentPricing;
+					delete priceobject.tax;
+				});
 				option1.slice.forEach(function (option2) {
 					delete option2.kind;
 					delete option2.duration;

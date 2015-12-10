@@ -13,6 +13,18 @@ angular.module("skyNautilus")
 			});
 		};
 		
+		//Update trip/////////
+		
+		this.updateTrip = function (trip) {
+			return $http({
+				method: "PUT",
+				url: "/api/trips",
+				data: trip
+			}).then(function (response) {
+				return response.data;		
+			});
+		};
+		
 		//Get trips///////////
 		this.getTrips = function (trip) {
 			return $http({

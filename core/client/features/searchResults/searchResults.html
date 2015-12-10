@@ -171,12 +171,15 @@
 	<!---------------Filter-------------------->
 	<div class="filterWrapper">
 			<div class="filterLabel">Filter Search Results</div>
+			
+			<input type="text" ng-model="citiesToFilterOut">
+			
 			<div class="filters">
-
 				<div class="originFilter">
 					<div class="smallFilterLabel">Origin</div>
 					<div class="chipSection">
-						<div class="airlineChip" ng-repeat="city in searchResults.cities">{{city.name}}</div>
+						<div class="airlineChip" ng-repeat="city in searchResults.cities" ng-click="addCityToFilter(city)">
+							{{city.name}}</div>
 					</div>
 				</div>
 
@@ -202,7 +205,7 @@
 		<div class="chooseTrip">
 			<div class="modalLabel">Choose Trip</div>
 			<label>
-				<select name="selection" type="number" ng-model="tripName"></select>
+				<select name="selection" type="number" ng-model="tripName" ng-options="trip for trip in tripsDropdown"></select>
 			</label>
 		</div>
 
@@ -212,7 +215,7 @@
 
 		<label class="tripNameInput" ng-show="newTripInputShown">
 			<span class="modalLabel">Trip Name:</span>
-			<input type="string" ng-model="tripName" class="tripNameInputField" />
+			<input type="string" ng-model="newTripName" class="tripNameInputField" />
 		</label>
 
 

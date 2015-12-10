@@ -12,11 +12,13 @@ angular.module("skyNautilus")
    	var getUser = function () {
       authService.authedUser().then(function (data) {
         $scope.authedUser = data;
-        console.log($scope.authedUser);
+        console.log("logging autheduser", $scope.authedUser);
       });
     };
 
     getUser();
+
+
 
     //Load search results
 
@@ -77,6 +79,26 @@ angular.module("skyNautilus")
     //Shows or hides save trip modal
 
     $scope.showHideSaveModal = function () {
+
+      function getcurrentUserInfo() {
+        tripService.getTrips().then(function (response) {
+          $scope.trips = response;
+
+          $scope.tripsDropdown = [];
+
+          console.log("scope.trips", $scope.trips);
+          $scope.trips.forEach(function (trip) {
+            $scope.tripsDropdown.push(trip.name);
+          });
+
+          console.log("trip dropdown", $scope.tripsDropdown);
+
+        });
+      };
+
+      getcurrentUserInfo();
+
+
       var el = document.getElementById("overlay");
       el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
     };
@@ -108,26 +130,44 @@ angular.module("skyNautilus")
 
     $scope.addTrip = function () {
 
-      $scope.itineraryToSave.tripType = $scope.searchResults.tripType;
-
-      console.log($scope.itineraryToSave.tripType);
-
-      $scope.itineraryToSave.name = $scope.tripName;
-
-      $scope.itineraryToSave.itineraries = [];
-      $scope.itineraryToSave.itineraries.push($scope.selectedItinerary);
-
-      $scope.itineraryToSave.user = $scope.authedUser._id;
-
-      console.log("Logging itinerary to save", $scope.itineraryToSave);
-
-      tripService.addTrip($scope.itineraryToSave).then(function (response) {
-        return response;
+      if ($scope.tripName) {
+        $scope.itineraryToSave.user = $scope.authedUser._id;
+        $scope.itineraryToSave.tripType = $scope.searchResults.tripType;
+        $scope.itineraryToSave.name = $scope.tripName;
+        $scope.itineraryToSave.itineraries = [];
+        $scope.itineraryToSave.itineraries.push($scope.selectedItinerary);
+        tripService.updateTrip($scope.itineraryToSave).then(function (response) {
+          return response;
+        });
+        
+      } else {
+        $scope.itineraryToSave.user = $scope.authedUser._id;
+        $scope.itineraryToSave.tripType = $scope.searchResults.tripType;
+        $scope.itineraryToSave.name = $scope.newTripName;
+        $scope.itineraryToSave.itineraries = [];
+        $scope.itineraryToSave.itineraries.push($scope.selectedItinerary);
+        tripService.addTrip($scope.itineraryToSave).then(function (response) {
+          return response;
       });
-
-      $scope.showHideSaveModal();
-
     };
+
+
+
+    $scope.showHideSaveModal();
+
+  };
+
+
+    
+
+//Filter
+    
+$scope.citiesToFilterOut = [$scope.searchResults.origin];
+
+$scope.addCityToFilter = function (item) {
+  console.log(item);
+  $scope.citiesToFilterOut = item.code;
+};
 
 
 

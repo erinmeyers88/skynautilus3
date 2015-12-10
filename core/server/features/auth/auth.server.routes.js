@@ -23,7 +23,6 @@ module.exports = function (app) {
     app.route("/getautheduser")
         .get(function (req, res) {
             res.status(200).json(req.user);
-            console.log("Grabbing req.user", req.user);
         });
 
     // // FACEBOOK AUTHENTICATION AND REDIRECTION

@@ -884,7 +884,7 @@ div p {
     font-size: 12px;
     margin-top: 10px;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 }
 
@@ -936,4 +936,13 @@ div p {
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.isBlue {
+    background-color: rgb(0, 0, 128);
+}
+
+.isBlack {
+    background-color: grey;
+    border-style: inset;
 }

@@ -9,7 +9,7 @@
 
 	<div class="listWrapper">
 
-		<div class="searchResultsListing" ng-repeat="listing in searchResults.flightListings">
+		<div class="searchResultsListing" ng-repeat="listing in searchResults.flightListings | filter: filterFunc">
 			<div class="whiteBackground">
 				<div class="dataWrapper">
 					<!--OUTBOUND---------------------------------------------------------------->
@@ -170,16 +170,15 @@
 	</div>
 	<!---------------Filter-------------------->
 	<div class="filterWrapper">
-			<div class="filterLabel">Filter Search Results</div>
-			
-			<input type="text" ng-model="citiesToFilterOut">
-			
+			<div class="filterLabel">Filter Search Results</div>	
 			<div class="filters">
 				<div class="originFilter">
 					<div class="smallFilterLabel">Origin</div>
 					<div class="chipSection">
-						<div class="airlineChip" ng-repeat="city in searchResults.cities" ng-click="addCityToFilter(city)">
-							{{city.name}}</div>
+						<div class="airlineChip" ng-class="{isBlue: city.on, isBlack: !city.on}" ng-repeat="city in searchResults.cities" ng-click="city.on = !city.on">
+							<div>{{city.name}}</div>
+							<!--<input type="checkbox" ng-model="city.on">-->
+						</div>
 					</div>
 				</div>
 
@@ -187,7 +186,9 @@
 				<div class="airlineFilter">
 					<div class="smallFilterLabel">Airline</div>
 					<div class="chipSection">
-						<div class="airlineChip" ng-repeat="airline in searchResults.airlines">{{airline.name}}</div>
+						<div class="airlineChip" ng-repeat="airline in searchResults.airlines">{{airline.name}}
+							<input type="checkbox" ng-model="search.airline">
+						</div>
 					</div>
 
 				</div>

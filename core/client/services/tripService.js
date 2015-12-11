@@ -46,10 +46,17 @@ angular.module("skyNautilus")
 			});
 		};
 
-		//Go to trip
+		//Delete itinerary
+		
+		this.deleteItinerary = function (itineraryId) {
+			return $http({
+				method: "DELETE",
+				url: "/api/trips/itineraries/" + itineraryId
+			});
+		};
 		
 		
-		var selectedTrip = {};
+		
 
 		this.getSelectedTrip = function (trip) {
 			var endpoint = "/api/trips/" + trip.name;
@@ -57,15 +64,12 @@ angular.module("skyNautilus")
 				method: "GET",
 				url: endpoint
 			}).then(function (response) {
-				selectedTrip = response.data;
-				$location.path("/mytrips/" + trip.name);
+				return response.data;
+				// $location.path("/mytrips/" + trip.name);
 			});
 		};
 
 
-		this.displaySelectedTrip = function () {
-			return selectedTrip;
-		};
-
+		
 
 	});

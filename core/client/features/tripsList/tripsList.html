@@ -1,16 +1,20 @@
 <menu></menu>
 
-<div class="myTripsWrapper">
-
-<div class="tripList" ng-repeat="trip in trips">
-	<div class="tripListing">
-	<div class="tripInfoSection" ng-click="getSelectedTrip(trip)">
-		<div>{{trip.name}}</div>
-		<div ng-repeat="itinerary in trip.itinerary"></div>
-		<div class="tripPrice">${{trip.totalPrice}}</div>
+<div class="tripPageWrapper">
+	<div class="myTripsWrapper">
+		<div class="tripList" ng-repeat="trip in trips">
+			<div class="tripListing">
+				<div class="tripInfoSection" ng-click="getSelectedTrip(trip)">
+					<div>{{trip.name}}</div>
+					<div ng-repeat="itinerary in trip.itinerary"></div>
+					<div class="tripPrice">${{trip.totalPrice}}</div>
+				</div>
+				<input type="button" class="deleteTrip" ng-click="deleteTrip(trip._id)" value="DELETE"></input>
+			</div>
+		</div>
 	</div>
-	<input type="button" class="deleteTrip" ng-click="deleteTrip(trip._id)" value="DELETE"></input>
-	</div>
-</div>
 
+	<div class="selectedTripDiv">
+		<trip ng-repeat="itinerary in selectedTrip.itineraries"></trip>
+	</div>
 </div>

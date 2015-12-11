@@ -1,8 +1,8 @@
 angular.module("skyNautilus")
   .controller("searchResultsCtrl", function ($scope, flightSearchService, tripService, authService, $location, $state) {
-    
-    
-    
+
+
+    $scope.typingNewTripName = true;
     
     
     //Get current url
@@ -27,11 +27,11 @@ angular.module("skyNautilus")
     $scope.searchResults = flightSearchService.getFinalSearchResults();
 
     console.log("REsults in contr", $scope.searchResults);
-    
+
     for (var city in $scope.searchResults.originsAndDestintation) {
       $scope.searchResults.originsAndDestintation[city].on = true;
     }
-    
+
     for (var airline in $scope.searchResults.airlines) {
       $scope.searchResults.airlines[airline].on = true;
     }
@@ -89,6 +89,10 @@ angular.module("skyNautilus")
       getcurrentUserInfo();
       var el = document.getElementById("overlay");
       el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+      $scope.newTripName = "";
+      $scope.tripName = "";
+      $scope.newTripInputShown = false;
+      $scope.typingNewTripName = true;
     };
 
 
@@ -132,6 +136,8 @@ angular.module("skyNautilus")
         });
       };
 
+
+
       $scope.showHideSaveModal();
     };
 
@@ -149,37 +155,44 @@ angular.module("skyNautilus")
       //IF contains any excluded city - return false
       //else return true
       
-      var destinations = [item.slice[0].segment[0].leg[0].destination,item.slice[1].segment[0].leg[0].destination];
-      
-      var excludedCities = $scope.searchResults.originsAndDestintation.filter( function(val){
+      if ($scope.searchResults.tripType === "roundtrip") {
+        var destinations = [item.slice[0].segment[0].leg[0].destination, item.slice[1].segment[0].leg[0].destination];
+      } else {
+        var destinations = [item.slice[0].segment[0].leg[0].destination];
+      }
+
+
+      var excludedCities = $scope.searchResults.originsAndDestintation.filter(function (val) {
         return !val.on;
       });
-      
-      for(var city in excludedCities){
+
+      for (var city in excludedCities) {
         var isExcludedInDestinations = destinations.indexOf(excludedCities[city].airportCode) >= 0;
-        if(isExcludedInDestinations){
+        if (isExcludedInDestinations) {
           return false;
         }
       }
-      
-      
-      
-      var airlines = [item.slice[0].segment[0].flight.carrier, item.slice[1].segment[0].flight.carrier];
-      
-      var excludedAirlines = $scope.searchResults.airlines.filter( function(val){
+
+      if ($scope.searchResults.tripType === "roundtrip") {
+        var airlines = [item.slice[0].segment[0].flight.carrier, item.slice[1].segment[0].flight.carrier];
+      } else {
+        var airlines = [item.slice[0].segment[0].flight.carrier];
+      }
+
+      var excludedAirlines = $scope.searchResults.airlines.filter(function (val) {
         return !val.on;
       });
-      
-      for(var airline in excludedAirlines){
-        var isExcludedInAirlines = airlines.indexOf(excludedAirlines[airline].code) >= 0;
-        if(isExcludedInAirlines){
+
+      for (var airline in excludedAirlines) {
+        var isExcludedInAirlines = airlines.indexOf(excludedAirlines[airline].name) >= 0;
+        if (isExcludedInAirlines) {
           return false;
         }
       }
-    
+
       return true;
-      
-      
+
+
     };
 
 

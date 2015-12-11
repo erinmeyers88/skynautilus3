@@ -10,6 +10,9 @@ module.exports = function (app) {
 
 	app.route("/api/trips/:tripId")
 		.delete(Ctrl.deleteTrip);
+	
+	app.route("/api/trips/itineraries/:itineraryId")
+		.delete(Ctrl.deleteItinerary);
 		
 	app.route("/api/trips/:tripName")	
 		.get(Ctrl.getTrip);

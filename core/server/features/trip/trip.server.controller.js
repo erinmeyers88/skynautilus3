@@ -45,6 +45,19 @@ module.exports = {
 			}
 		});
 	},
+	
+	deleteItinerary: function (req, res) {
+		console.log("deleting", req.params.itineraryId);
+		var itineraryId = req.params.itineraryId;
+		Trip.findOneAndUpdate({"itineraries._id": itineraryId}, {$pull: {"itineraries": {_id: itineraryId}}}, function (err, result) {
+			if (err) {
+				return res.status(500).send(err);
+			} else {
+				console.log("result server", result);
+				res.send(result);
+			}
+		});
+	},
 
 	getTrip: function (req, res) {
 

@@ -1,6 +1,6 @@
 angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flightSearchService, tripService, authService, $location) {
 
-	  //Get current url
+	//Get current url
     $scope.url = $location.absUrl();
 
     $scope.showNewSearch = function () {
@@ -45,16 +45,30 @@ angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flig
 
 	$scope.deleteTrip = function (tripId) {
 		tripService.deleteTrip(tripId).then(function (response) {
+			$scope.selectedTrip = {};
 			$scope.getTrips();
+		});
+	};
+
+
+	$scope.deleteItinerary = function (itineraryId, index) {
+		console.log("logging in ctrl", itineraryId, index);
+		tripService.deleteItinerary(itineraryId).then(function (response) {
+			$scope.selectedTrip.itineraries.splice(index, 1);
 		});
 	};
 
 
 	$scope.getSelectedTrip = function (trip) {
 		console.log("getting trip", trip.name);
-		tripService.getSelectedTrip(trip);
+		tripService.getSelectedTrip(trip).then(function (response) {
+			$scope.selectedTrip = response;
+			console.log("response", response);
+		});
 	};
 
+
+	
 
 
 });

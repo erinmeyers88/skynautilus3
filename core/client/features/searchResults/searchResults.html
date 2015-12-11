@@ -149,7 +149,7 @@
 
 			</div>
 
-			<div class="buttonWrapper">
+			<div class="buttonWrapper" ng-show="authedUser">
 				<div class="column saveButtonDiv">
 					<input type="button" class="saveButton" value="Save to&#13;&#10;Trips" ng-click="showHideSaveModal(); setSelectedItinerary(listing)"
 					/>
@@ -168,7 +168,11 @@
 
 
 	</div>
-	<!---------------Filter-------------------->
+	
+</div>
+
+
+<!---------------Filter-------------------->
 	<div class="filterWrapper">
 		<div class="filterLabel">Filter Search Results</div>
 		<div class="filters">
@@ -186,7 +190,8 @@
 			<div class="airlineFilter">
 				<div class="smallFilterLabel">Airline</div>
 				<div class="chipSection">
-					<div class="airlineChip" ng-repeat="airline in searchResults.airlines track by $index" ng-class="{isBlue: airline.on, isBlack: !airline.on}" ng-click="airline.on = !airline.on">{{airline.name}}
+					<div class="airlineChip" ng-repeat="airline in searchResults.airlines track by $index" ng-class="{isBlue: airline.on, isBlack: !airline.on}" ng-click="airline.on = !airline.on">
+						<div>{{airline.name}}</div>
 					</div>
 				</div>
 
@@ -194,8 +199,6 @@
 
 		</div>
 	</div>
-</div>
-
 
 <!---------------------Save to Trip Modal------------------------->
 
@@ -209,7 +212,7 @@
 			</label>
 		</div>
 
-		<div class="modalButton" ng-click="newTripInputShown = !newTripInputShown">NEW TRIP</div>
+		<div class="modalButton" ng-click="newTripInputShown = !newTripInputShown; typingNewTripName = !typingNewTripName" ng-show="typingNewTripName">NEW TRIP</div>
 
 
 

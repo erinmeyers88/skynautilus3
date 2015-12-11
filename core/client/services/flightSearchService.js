@@ -76,7 +76,7 @@ function FlightSearchService($http, $state, $location) {
 
 		function addToResults(results) {			
 
-			// cities //
+			// Make filter list of cities //
 			
 			results.tripOptions.forEach(function (option1) {
 				option1.slice.forEach(function (option2) {
@@ -102,6 +102,10 @@ function FlightSearchService($http, $state, $location) {
 			});
 
 
+
+			//Change city names for filter
+		
+
 			for (var i = 0; i < searchResults.originsAndDestintation.length; i++) {
 				searchResults.originsAndDestintation[i] = { airportCode: searchResults.originsAndDestintation[i] };
 				for (var j = 0; j < results.header.airport.length; j++) {
@@ -109,17 +113,43 @@ function FlightSearchService($http, $state, $location) {
 						searchResults.originsAndDestintation[i].cityCode = results.header.airport[j].city;
 					}
 				};
-					for (var k = 0; k < results.header.city.length; k++) {
-						if (results.header.city[k].code === searchResults.originsAndDestintation[i].cityCode) {
-							searchResults.originsAndDestintation[i].cityName = results.header.city[k].name;
-						}
+				for (var k = 0; k < results.header.city.length; k++) {
+					if (results.header.city[k].code === searchResults.originsAndDestintation[i].cityCode) {
+						searchResults.originsAndDestintation[i].cityName = results.header.city[k].name;
 					}
+				}
 
 			}
 
+			//Change airline names
+			
+			
+			results.tripOptions.forEach(function (option1) {
+				option1.slice.forEach(function (option2) {
+					option2.segment.forEach(function (option3) {
+						for (var i = 0; i < results.header.carrier.length; i++) {
+							if (results.header.carrier[i].code === option3.flight.carrier) {
+								option3.flight.carrier = results.header.carrier[i].name;
+							}
+						}
+					});
+				});
+			});
+
+			results.tripOptions.forEach(function (option1) {
+				option1.slice.forEach(function (option2) {
+					option2.segment.forEach(function (option3) {
+						option3.flight.carrier = option3.flight.carrier.replace(",", "");
+						option3.flight.carrier = option3.flight.carrier.replace("Inc.", "");
+					});
+				});
+			});
+
 
 			
 			
+			
+		
 			// //airlines//
 			
 			// var airlineCodes = {
@@ -140,6 +170,11 @@ function FlightSearchService($http, $state, $location) {
 			// });
 
 			searchResults.airlines = searchResults.airlines.concat(results.header.carrier);
+
+			searchResults.airlines.forEach(function (airline) {
+				airline.name = airline.name.replace(",", "");
+				airline.name = airline.name.replace("Inc.", "");
+			}); 
 
 			searchResults.airports = searchResults.airports.concat(results.header.airport);
 			
@@ -239,7 +274,7 @@ function FlightSearchService($http, $state, $location) {
 	
 	//////HTTP POST request for flight info//////////////////////////////////
 	function submitGoogleSearch(searchBody, userInput) {
-		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAFEjs778GYWjvMrYyuzPLk5eLAqtqLfdA';
+		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAFSQP3ClWoPPShBYApLfxjazl-1WsKpu8';
 		return $http.post(endpoint, searchBody).then(function (response) {
 			return { header: response.data.trips.data, tripOptions: response.data.trips.tripOption };
 		});

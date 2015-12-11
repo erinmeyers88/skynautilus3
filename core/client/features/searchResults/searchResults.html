@@ -162,38 +162,38 @@
 		</div>
 
 
-		
 
 
-		
+
+
 
 	</div>
 	<!---------------Filter-------------------->
 	<div class="filterWrapper">
-			<div class="filterLabel">Filter Search Results</div>	
-			<div class="filters">
-				<div class="originFilter">
-					<div class="smallFilterLabel">Origin</div>
-					<div class="chipSection">
-						<div class="airlineChip" ng-class="{isBlue: city.on, isBlack: !city.on}" ng-repeat="city in searchResults.originsAndDestintation track by $index" ng-click="city.on = !city.on">
-							<div>{{city.cityName}} ({{city.airportCode}})</div>
-						</div>
+		<div class="filterLabel">Filter Search Results</div>
+		<div class="filters">
+			<div class="originFilter">
+				<div class="smallFilterLabel">Origin</div>
+				<div class="chipSection">
+					<div class="airlineChip" ng-class="{isBlue: city.on, isBlack: !city.on}" ng-repeat="city in searchResults.originsAndDestintation track by $index"
+					ng-click="city.on = !city.on">
+						<div>{{city.cityName}} ({{city.airportCode}})</div>
 					</div>
 				</div>
+			</div>
 
 
-				<div class="airlineFilter">
-					<div class="smallFilterLabel">Airline</div>
-					<div class="chipSection">
-						<div class="airlineChip" ng-repeat="airline in searchResults.airlines track by $index">{{airline.name}}
-							<input type="checkbox" ng-model="search.airline">
-						</div>
+			<div class="airlineFilter">
+				<div class="smallFilterLabel">Airline</div>
+				<div class="chipSection">
+					<div class="airlineChip" ng-repeat="airline in searchResults.airlines track by $index" ng-class="{isBlue: airline.on, isBlack: !airline.on}" ng-click="airline.on = !airline.on">{{airline.name}}
 					</div>
-
 				</div>
 
 			</div>
+
 		</div>
+	</div>
 </div>
 
 
@@ -284,7 +284,7 @@
 				<div class="submitSearch">
 					<label>
 						<input type="button" class="button modifySearchModalButton" value="Cancel" ng-click="showHideModifySearchModal()">
-						<input type="button" class="button modifySearchModalButton" value="Search" ng-click="search()"/>
+						<input type="button" class="button modifySearchModalButton" value="Search" ng-click="search()" />
 					</label>
 				</div>
 			</form>
@@ -297,7 +297,7 @@
 
 <div id="loadModal">
 	<div class="loadModalInside">
-        <div class="modalLabel">Finding Flights</div>
-        <img src="/shared/img/plane.GIF" alt="">
+		<div class="modalLabel">Finding Flights</div>
+		<img src="/shared/img/plane.GIF" alt="">
 	</div>
 </div>

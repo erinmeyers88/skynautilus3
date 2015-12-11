@@ -120,24 +120,24 @@ function FlightSearchService($http, $state, $location) {
 
 			
 			
-			//airlines//
+			// //airlines//
 			
-			var airlineCodes = {
-				AS: "Alaska",
-				US: "US Air",
-				VX: "Virgin America",
-				B6: "Jet Blue",
-				UA: "United",
-				WS: "WestJet",
-				NK: "Spirit",
-				F9: "Frontier"
-			};
+			// var airlineCodes = {
+			// 	AS: "Alaska",
+			// 	US: "US Air",
+			// 	VX: "Virgin America",
+			// 	B6: "Jet Blue",
+			// 	UA: "United",
+			// 	WS: "WestJet",
+			// 	NK: "Spirit",
+			// 	F9: "Frontier"
+			// };
 
-			results.header.carrier.forEach(function (airline) {
-				airline.code = airline.code.replace(/AS|US|VX|B6|UA|WS|NK|F9/gi, function (code) {
-					return airlineCodes[code];
-				});
-			});
+			// results.header.carrier.forEach(function (airline) {
+			// 	airline.code = airline.code.replace(/AS|US|VX|B6|UA|WS|NK|F9/gi, function (code) {
+			// 		return airlineCodes[code];
+			// 	});
+			// });
 
 			searchResults.airlines = searchResults.airlines.concat(results.header.carrier);
 
@@ -184,9 +184,9 @@ function FlightSearchService($http, $state, $location) {
 
 						delete option3.duration;
 
-						option3.flight.carrier = option3.flight.carrier.replace(/AS|US|VX|B6|UA|WS|NK|F9/gi, function (code) {
-							return airlineCodes[code];
-						});
+						// option3.flight.carrier = option3.flight.carrier.replace(/AS|US|VX|B6|UA|WS|NK|F9/gi, function (code) {
+						// 	return airlineCodes[code];
+						// });
 						option3.leg.forEach(function (option4) {
 							delete option4.$$hashKey;
 							delete option4.aircraft;

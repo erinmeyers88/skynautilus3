@@ -31,6 +31,11 @@ angular.module("skyNautilus")
     for (var city in $scope.searchResults.originsAndDestintation) {
       $scope.searchResults.originsAndDestintation[city].on = true;
     }
+    
+    for (var airline in $scope.searchResults.airlines) {
+      $scope.searchResults.airlines[airline].on = true;
+    }
+    
 
     //Determines whether to show depart and return labels
     $scope.isShown = function (tripType) {
@@ -138,9 +143,7 @@ angular.module("skyNautilus")
  
         
      
-    $scope.filterFunc1 = function (item) {
-      var abc = 123;
-      
+    $scope.filterFunc1 = function (item) { 
       //GO THROUGH all destination filters
       
       //IF contains any excluded city - return false
@@ -158,24 +161,25 @@ angular.module("skyNautilus")
           return false;
         }
       }
+      
+      
+      
+      var airlines = [item.slice[0].segment[0].flight.carrier, item.slice[1].segment[0].flight.carrier];
+      
+      var excludedAirlines = $scope.searchResults.airlines.filter( function(val){
+        return !val.on;
+      });
+      
+      for(var airline in excludedAirlines){
+        var isExcludedInAirlines = airlines.indexOf(excludedAirlines[airline].code) >= 0;
+        if(isExcludedInAirlines){
+          return false;
+        }
+      }
+    
       return true;
       
       
-      
-      // for (var city in $scope.searchResults.originsAndDestintation) {
-      //   var x = $scope.searchResults.originsAndDestintation[city];
-      //   if ((x.on && (item.slice[0].segment[0].leg[0].destination === x.airportCode))) {
-      //     return true;
-      //   } 
-      //   if ((x.on && (item.slice[1].segment[0].leg[0].destination === x.airportCode)))
-      //   {
-      //     return true;
-      //   } 
-        
-      // }
-      // return false;
-      
-
     };
 
 

@@ -2,6 +2,7 @@
 
 <div class="tripPageWrapper">
 	<div class="myTripsWrapper">
+		<div class="selectATripMenuLabel">Select A Trip</div>
 		<div class="tripList" ng-repeat="trip in trips">
 			<div class="tripListing">
 				<div class="tripInfoSection" ng-click="getSelectedTrip(trip)">
@@ -9,12 +10,16 @@
 					<div ng-repeat="itinerary in trip.itinerary"></div>
 					<div class="tripPrice">${{trip.totalPrice}}</div>
 				</div>
-				<input type="button" class="deleteTrip" ng-click="deleteTrip(trip._id)" value="DELETE"></input>
+				
+				<div class="deleteTripButtonWrapper"><input type="button" class="deleteTrip saveButton" ng-click="deleteTrip(trip._id)" value="Delete"></input></div>
+				
 			</div>
 		</div>
 	</div>
 
 	<div class="selectedTripDiv">
+		<div class="selectATrip" ng-show="!selectedTrip">Select A Trip</div>
+		<div class="tripNameLabel">{{selectedTrip.name}}</div>
 		<trip ng-repeat="itinerary in selectedTrip.itineraries"></trip>
 	</div>
 </div>

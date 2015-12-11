@@ -18,9 +18,7 @@ angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flig
 
 	getUser();
 
-
-
-
+	
 	$scope.getTrips = function () {
 		tripService.getTrips().then(function (response) {
 			$scope.trips = response;

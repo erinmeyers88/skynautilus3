@@ -888,6 +888,10 @@ div p {
 	justify-content: center;
 }
 
+.airlineChip div {
+    line-height: 30px;
+}
+
 /*/////////////////////////
 /////My Trips Section//////
 //////////////////////////*/
@@ -943,6 +947,7 @@ div p {
 }
 
 .isBlack {
-    background-color: grey;
+    background-color: #0000cc;
+    border: 1px solid rgb(0, 0, 128);
     border-style: inset;
 }

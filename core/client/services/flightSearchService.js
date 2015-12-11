@@ -2,7 +2,7 @@ angular.module("skyNautilus").service("flightSearchService", FlightSearchService
 
 function FlightSearchService($http, $state, $location) {
 
-	
+
 
 	var userInputObject = {};
 
@@ -43,7 +43,8 @@ function FlightSearchService($http, $state, $location) {
 			index = 0,
 			searchResults = {
 				tripType: userInput.tripType,
-				cities: [],
+				originsAndDestintation: [],
+				airports: [],
 				airlines: [],
 				flightListings: []
 			};
@@ -76,7 +77,48 @@ function FlightSearchService($http, $state, $location) {
 		function addToResults(results) {			
 
 			// cities //
-			searchResults.cities = searchResults.cities.concat(results.header.city);
+			
+			results.tripOptions.forEach(function (option1) {
+				option1.slice.forEach(function (option2) {
+					option2.segment.forEach(function (option3) {
+						option3.leg.forEach(function (option4) {
+							if (searchResults.originsAndDestintation.length === 0) {
+								searchResults.originsAndDestintation.push(option4.origin);
+								searchResults.originsAndDestintation.push(option4.destination);
+							} else {
+								if (searchResults.originsAndDestintation.indexOf(option4.origin) === -1) {
+									searchResults.originsAndDestintation.push(option4.origin);
+								}
+								if (searchResults.originsAndDestintation.indexOf(option4.destination) === -1) {
+									searchResults.originsAndDestintation.push(option4.destination);
+								}
+								else {
+									return;
+								}
+							}
+						});
+					});
+				});
+			});
+
+
+			for (var i = 0; i < searchResults.originsAndDestintation.length; i++) {
+				searchResults.originsAndDestintation[i] = { airportCode: searchResults.originsAndDestintation[i] };
+				for (var j = 0; j < results.header.airport.length; j++) {
+					if (results.header.airport[j].code === searchResults.originsAndDestintation[i].airportCode) {
+						searchResults.originsAndDestintation[i].cityCode = results.header.airport[j].city;
+					}
+				};
+					for (var k = 0; k < results.header.city.length; k++) {
+						if (results.header.city[k].code === searchResults.originsAndDestintation[i].cityCode) {
+							searchResults.originsAndDestintation[i].cityName = results.header.city[k].name;
+						}
+					}
+
+			}
+
+
+			
 			
 			//airlines//
 			
@@ -98,8 +140,8 @@ function FlightSearchService($http, $state, $location) {
 			});
 
 			searchResults.airlines = searchResults.airlines.concat(results.header.carrier);
-			
 
+			searchResults.airports = searchResults.airports.concat(results.header.airport);
 			
 			//Itineraries//
 			results.tripOptions.forEach(function (option1) {
@@ -132,7 +174,6 @@ function FlightSearchService($http, $state, $location) {
 						delete option3.bookingCodeCount;
 						delete option3.cabin;
 						delete option3.connectionDuration;
-
 						delete option3.id;
 						delete option3.kind;
 						delete option3.marriedSegmentGroup;
@@ -198,7 +239,7 @@ function FlightSearchService($http, $state, $location) {
 	
 	//////HTTP POST request for flight info//////////////////////////////////
 	function submitGoogleSearch(searchBody, userInput) {
-		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAFSQP3ClWoPPShBYApLfxjazl-1WsKpu8';
+		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAFEjs778GYWjvMrYyuzPLk5eLAqtqLfdA';
 		return $http.post(endpoint, searchBody).then(function (response) {
 			return { header: response.data.trips.data, tripOptions: response.data.trips.tripOption };
 		});

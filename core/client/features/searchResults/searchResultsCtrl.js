@@ -28,8 +28,8 @@ angular.module("skyNautilus")
 
     console.log("REsults in contr", $scope.searchResults);
     
-    for (var city in $scope.searchResults.cities) {
-      $scope.searchResults.cities[city].on = true;
+    for (var city in $scope.searchResults.originsAndDestintation) {
+      $scope.searchResults.originsAndDestintation[city].on = true;
     }
 
     //Determines whether to show depart and return labels
@@ -131,20 +131,51 @@ angular.module("skyNautilus")
     };
 
 
+
+    
+
     //Filter
  
         
      
-    $scope.filterFunc = function (item) {
-
-
-      for (var city in $scope.searchResults.cities) {
-        var x = $scope.searchResults.cities[city];
-        console.log("logging x.on", x.on);
-        if (x.on && (item.slice[0].segment[0].leg[0].destination === (x.code))) {
-          return true;
+    $scope.filterFunc1 = function (item) {
+      var abc = 123;
+      
+      //GO THROUGH all destination filters
+      
+      //IF contains any excluded city - return false
+      //else return true
+      
+      var destinations = [item.slice[0].segment[0].leg[0].destination,item.slice[1].segment[0].leg[0].destination];
+      
+      var excludedCities = $scope.searchResults.originsAndDestintation.filter( function(val){
+        return !val.on;
+      });
+      
+      for(var city in excludedCities){
+        var isExcludedInDestinations = destinations.indexOf(excludedCities[city].airportCode) >= 0;
+        if(isExcludedInDestinations){
+          return false;
         }
       }
+      return true;
+      
+      
+      
+      // for (var city in $scope.searchResults.originsAndDestintation) {
+      //   var x = $scope.searchResults.originsAndDestintation[city];
+      //   if ((x.on && (item.slice[0].segment[0].leg[0].destination === x.airportCode))) {
+      //     return true;
+      //   } 
+      //   if ((x.on && (item.slice[1].segment[0].leg[0].destination === x.airportCode)))
+      //   {
+      //     return true;
+      //   } 
+        
+      // }
+      // return false;
+      
+
     };
 
 

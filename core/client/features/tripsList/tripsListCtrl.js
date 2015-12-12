@@ -7,7 +7,7 @@ angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flig
 		return $scope.url !== "/#/home";
     };
 
-	console.log($scope.showNewSearch());
+	
 
 	//Get authed user
 	var getUser = function () {
@@ -18,7 +18,7 @@ angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flig
 
 	getUser();
 
-	
+
 	$scope.getTrips = function () {
 		tripService.getTrips().then(function (response) {
 			$scope.trips = response;
@@ -62,11 +62,21 @@ angular.module("skyNautilus").controller("tripsListCtrl", function ($scope, flig
 		tripService.getSelectedTrip(trip).then(function (response) {
 			$scope.selectedTrip = response;
 			console.log("response", response);
+			$scope.selectedTrip.itineraries.forEach(function (itinerary) {
+				if (itinerary.slice.length > 1) {
+					itinerary.roundtrip = true;
+				} else {
+					itinerary.roundtrip = false;
+				}
+			});
+
+			console.log('roundtrip:', $scope.roundtrip);
 		});
 	};
 
 
-	
+
+
 
 
 });

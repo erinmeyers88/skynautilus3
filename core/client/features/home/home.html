@@ -1,72 +1,99 @@
-<menu></menu>	
+<menu></menu>
 
 <div class="backgroundImage"></div>
 
 <div class="alignForm">
-<div class="formBackground">
-    <form action="" method="post" class="flightSearch searchForm">
-        <h1>Search Flights</h1>
+    <div class="formBackground">
+        <form action="" method="post" class="flightSearch searchForm">
+            <h1>Search Flights</h1>
 
 
-<!--Trip Type-->
-        <div class="radioButtons">
-            <label>One-way
-                <input id="oneway" type="radio" name="name" ng-model="userInput.tripType" value="oneway"/>
-            </label>
-            <label>Round-trip
-                <input id="roundtrip" type="radio" name="name" ng-model="userInput.tripType" value="roundtrip"/>
-            </label>
-        </div>
+            <!--Trip Type-->
+            <div class="radioButtons">
+                <label>One-way
+                    <input id="oneway" type="radio" name="name" ng-model="userInput.tripType" value="oneway" />
+                </label>
+                <label>Round-trip
+                    <input id="roundtrip" type="radio" name="name" ng-model="userInput.tripType" value="roundtrip" />
+                </label>
+            </div>
 
-<!--Destination-->
-        <div class="destinationInput">
-            <label>
-                <span>Destination:</span>
-                <input list="airports" type="string" ng-model="userInput.destination" class="destination"/>
-            </label>
-        </div>
+            <!--Destination-->
+            <div class="destinationInput">
+                <label>
+                    <span>Destination:</span>
+                    <select name="selection" ng-model="userInput.destination" class="destination">
+                        <option value=AMS>Amsterdam, The Netherlands (AMS)</option>
+                        <option value=ATL>Atlanta, United States (ATL)</option>
+                        <option value=BKK>Bangkok, Thailand (BKK)</option>
+                        <option value=PEK>Beijing, China (PEK)</option>
+                        <option value=SIN>Changi, Singapore (SIN)</option>
+                        <option value=CLT>Charlotte, United States (CLT)</option>
+                        <option value=CTU>Chengdu, China (CTU)</option>
+                        <option value=ORD>Chicago, United States (ORD)</option>
+                        <option value=DFW>Dallas-Fort Worth, United States (DFW)</option>
+                        <option value=DEL>Delhi, India (DEL)</option>
+                        <option value=DEN>Denver, United States (DEN)</option>
+                        <option value=DXB>Dubai, United Arab Emirates (DXB)</option>
+                        <option value=FRA>Frankfurt, Germany (FRA)</option>
+                        <option value=CAN>Guangzhou, China (CAN)</option>
+                        <option value=HKG>Hong Kong, China (HKG)</option>
+                        <option value=IST>Istanbul, Turkey (IST)</option>
+                        <option value=CGK>Jakarta, Indonesia (CGK)</option>
+                        <option value=KUL>Kuala Lumpur, Malaysia (KUL)</option>
+                        <option value=LAS>Las Vegas, United States (LAS)</option>
+                        <option value=LHR>London, United Kingdom (LHR)</option>
+                        <option value=LAX>Los Angeles, United States (LAX)</option>
+                        <option value=MIA>Miami, United States (MIA)</option>
+                        <option value=JFK>New York City, United States (JFK)</option>
+                        <option value=CDG>Paris, France (CDG)</option>
+                        <option value=PHX>Phoenix, United States (PHX)</option>
+                        <option value=SFO>San Francisco, United States (SFO)</option>
+                        <option value=GRU>São Paulo, Brazil (GRU)</option>
+                        <option value=ICN>Seoul, South Korea (ICN)</option>
+                        <option value=PVG>Shanghai, China (PVG)</option>
+                        <option value=HND>Tokyo, Japan (HND)</option>
+                    </select>
+                </label>
+            </div>
 
-        
-        <datalist id="airports"></datalist>
+            <div class="dateInput">
+                <label>
+                    <span>Depart:</span>
+                    <datepicker date-year-title="selected title" date-format="yyyy-MM-dd">
+                        <input type="string" ng-model="userInput.departureDate" class="date" />
+                    </datepicker>
+                </label>
 
 
-        <div class="dateInput">
-            <label>
-                <span>Depart:</span>
-                <datepicker date-year-title="selected title" date-format="yyyy-MM-dd">
-                    <input type="string" ng-model="userInput.departureDate" class="date"/>
-                </datepicker>
-            </label>
+                <label ng-show="showReturnDate()">
+                    <span>Return:</span>
+                    <datepicker date-year-title="selected title" date-format="yyyy-MM-dd">
+                        <input type="string" ng-model="userInput.returnDate" class="date" />
+                    </datepicker>
+                </label>
+            </div>
 
+            <div class="passengerInput">
+                <label>
+                    <span>Passengers:</span>
+                    <select name="selection" ng-model="userInput.passengerCount" class="passengerInputDropdown">
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                    </select>
+                </label>
+            </div>
 
-            <label ng-show="showReturnDate()">
-                <span>Return:</span>
-                <datepicker date-year-title="selected title" date-format="yyyy-MM-dd">
-                    <input type="string" ng-model="userInput.returnDate" class="date"/>
-                </datepicker>
-            </label>
-        </div>
+            <div class="submitSearch">
+                <label>
+                    <input type="button" class="button" value="Search" ng-click="search()" />
+                </label>
+            </div>
 
-        <div class="passengerInput">
-            <label>
-                <span>Passengers:</span>
-                <select name="selection" ng-model="userInput.passengerCount">
-                    <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
-                    <option value=4>4</option>
-                </select>
-            </label>
-        </div>
-
-        <div class="submitSearch">
-            <label>
-                <input type="button" class="button" value="Search" ng-click="search()"/>
-            </label>
-        </div>
-
-    </form>
-</div>
+        </form>
+    </div>
 </div>
 
 <div class="titleBackground"></div>
@@ -80,19 +107,18 @@
 <!---------------------Login Modal------------------------->
 
 <div id="loginModal">
-	<div class="loginModalInside">
-        
-	</div>
+    <div class="loginModalInside">
+
+    </div>
 </div>
 
 
 <!---------------------Load Results Modal------------------------->
 
 <div id="loadModal">
-	<div class="loadModalInside">
+    <div class="loadModalInside">
         <div class="modalLabel">Finding Flights</div>
         <img src="/shared/img/plane.GIF" alt="">
         <!--<iframe src="//giphy.com/embed/QRijqQ3JRF876" width="250" height="100" frameBorder="0" allowFullScreen></iframe>-->
-	</div>
+    </div>
 </div>
-

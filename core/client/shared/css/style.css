@@ -205,19 +205,7 @@ datepicker select, datepicker select:focus, datepicker select:hover,
     font-size: 16px;
 }
 
-.destination {
-    color: black;
-    height: 25px;
-    width: 150px;
-    border-radius: 5px;
-    margin-top: 7px;
-    border: 1px solid #E5E5E5;
-    background: #FBFBFB;
-    font: normal 14px/14px Arial, Helvetica, sans-serif;
-    text-align: center;
-    
-    
-}
+
 
 .date {
     color: black;
@@ -231,15 +219,27 @@ datepicker select, datepicker select:focus, datepicker select:hover,
 }
 
 
-.flightSearch select {
+.passengerInputDropdown {
     color: black;
-    height: 25px;
+    height: 27px;
     width: 50px;
     border-radius: 5px;
     margin-top: 7px;
     border: 1px solid #E5E5E5;
     background: #FBFBFB;
     font: normal 14px/14px Arial, Helvetica, sans-serif;
+}
+
+.destination {
+    color: black;
+    height: 27px;
+    width: 150px;
+    border-radius: 5px;
+    margin-top: 7px;
+    border: 1px solid #E5E5E5;
+    background: #FBFBFB;
+    font: normal 14px/14px Arial, Helvetica, sans-serif;
+    text-align: center;  
 }
 
 .flightSearch .button {

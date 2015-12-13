@@ -38,7 +38,7 @@ function FlightSearchService($http, $state, $location) {
 
 		showHideLoadResultsModal();
 
-		var origins = ["PDX"],
+		var origins = ["PDX", "SLC", "LAX"],
 			length = origins.length - 1,
 			index = 0,
 			searchResults = {

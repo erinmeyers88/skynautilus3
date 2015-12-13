@@ -141,6 +141,8 @@ function FlightSearchService($http, $state, $location) {
 					option2.segment.forEach(function (option3) {
 						option3.flight.carrier = option3.flight.carrier.replace(",", "");
 						option3.flight.carrier = option3.flight.carrier.replace("Inc.", "");
+						option3.flight.carrier = option3.flight.carrier.replace("Co.", "");
+						option3.flight.carrier = option3.flight.carrier.replace("Ltd.", "");
 					});
 				});
 			});
@@ -174,7 +176,7 @@ function FlightSearchService($http, $state, $location) {
 			searchResults.airlines.forEach(function (airline) {
 				airline.name = airline.name.replace(",", "");
 				airline.name = airline.name.replace("Inc.", "");
-			}); 
+			});
 
 			searchResults.airports = searchResults.airports.concat(results.header.airport);
 			
@@ -244,6 +246,26 @@ function FlightSearchService($http, $state, $location) {
 							delete option4.arrivalTime;
 							delete option4.departureTime;
 							delete option4.duration;
+
+
+							searchResults.airports.forEach(function (airport) {
+								if (option4.origin === airport.code) {
+									searchResults.originsAndDestintation.forEach(function (city) {
+										if (airport.city === city.cityCode) {
+											option4.originName = city.cityName;
+										}
+									});
+								}
+								if (option4.destination === airport.code) {
+									searchResults.originsAndDestintation.forEach(function (city) {
+										if (airport.city === city.cityCode) {
+											option4.destinationName = city.cityName;
+										}
+									});
+								}
+							});
+
+
 						});
 					});
 				});

@@ -142,6 +142,7 @@ angular.module("skyNautilus")
     };
 
 
+    $scope.limit = 17;
 
     
 
@@ -149,16 +150,32 @@ angular.module("skyNautilus")
  
         
      
-    $scope.filterFunc1 = function (item) { 
-      //GO THROUGH all destination filters
-      
-      //IF contains any excluded city - return false
-      //else return true
-      
+    $scope.filterFunc1 = function (item) {  
       if ($scope.searchResults.tripType === "roundtrip") {
-        var destinations = [item.slice[0].segment[0].leg[0].destination, item.slice[1].segment[0].leg[0].destination];
+
+        var destinations = [];
+        
+        for (var i = 0; i < item.slice[0].segment.length -1; i++) { 
+          for (var j = 0; j < item.slice[0].segment[i].leg.length; j++) {
+            destinations.push(item.slice[0].segment[i].leg[j].destination);
+          }     
+        }
+        
+        for (var i = 0; i < item.slice[1].segment.length -1; i++) {
+          for (var j = 0; j < item.slice[1].segment[i].leg.length; j++) {
+            destinations.push(item.slice[1].segment[i].leg[j].destination);
+          }     
+        }
+
       } else {
-        var destinations = [item.slice[0].segment[0].leg[0].destination];
+        
+        var destinations = [];
+        
+         for (var i = 0; i < item.slice[0].segment.length -1; i++) { 
+          for (var j = 0; j < item.slice[0].segment[i].leg.length; j++) {
+            destinations.push(item.slice[0].segment[i].leg[j].destination);
+          }     
+        }
       }
 
 
@@ -174,9 +191,29 @@ angular.module("skyNautilus")
       }
 
       if ($scope.searchResults.tripType === "roundtrip") {
-        var airlines = [item.slice[0].segment[0].flight.carrier, item.slice[1].segment[0].flight.carrier];
+
+        var airlines = [];
+
+        
+        for (var i = 0; i < item.slice[0].segment.length; i++) { 
+          for (var j = 0; j < item.slice[0].segment[i].leg.length; j++) {
+            airlines.push(item.slice[0].segment[i].flight.carrier);
+          }     
+        }
+        
+           for (var i = 0; i < item.slice[1].segment.length; i++) { 
+          for (var j = 0; j < item.slice[1].segment[i].leg.length; j++) {
+            airlines.push(item.slice[1].segment[i].flight.carrier);
+          }     
+        }      
       } else {
-        var airlines = [item.slice[0].segment[0].flight.carrier];
+        
+        var airlines = [];
+        for (var i = 0; i < item.slice[0].segment.length; i++) { 
+          for (var j = 0; j < item.slice[0].segment[i].leg.length; j++) {
+            airlines.push(item.slice[0].segment[i].flight.carrier);
+          }     
+        }  
       }
 
       var excludedAirlines = $scope.searchResults.airlines.filter(function (val) {

@@ -1,7 +1,7 @@
 html, body {
 	margin: 0;
 	padding: 0;
-	height: auto;
+	height: 1500px;
 	width: 100%;
     position: relative;
     min-width: 1280px;
@@ -130,12 +130,88 @@ datepicker select, datepicker select:focus, datepicker select:hover,
 #######################################*/
 
 .backgroundImage {
-	height: 700px;
+	height: 40%;
 	width: 100%;
 	background-image: url("/shared/img/nautilus2.jpg");
 	background-size: cover;
 	position: relative;
 
+}
+
+.aboutSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.firstLayer {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstAbout {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(0, 0, 128);
+    text-align: center;
+    font-size: 30px;
+    width: 70%;
+}
+
+.firstAbout {
+    line-height: 40px;
+}
+
+.firstPs {
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+
+.secondLayer {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 128);
+}
+
+.secondAbout {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+    width: 70%;
+}
+
+.secondAbout p {
+    line-height: 40px;
+}
+
+.thirdLayer {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.thirdAbout {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(0, 0, 128);
+    text-align: justify;
+    font-size: 25px;
+    width: 70%;
+}
+
+.thirdAbout p {
+    line-height: 40px;
 }
 
 .alignForm {
@@ -150,6 +226,7 @@ datepicker select, datepicker select:focus, datepicker select:hover,
 	background-color: rgba(255, 255, 255, .3)
 	
 }
+
 
 
 /* Flight Search*/
@@ -331,7 +408,7 @@ datepicker input {
     right: 130px;
 	color: #fff;
     font-size: 75px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     /*text-shadow: 0px 5px #000080;*/
     text-align: center;
     z-index: 5;
@@ -344,23 +421,44 @@ datepicker input {
 	position: absolute;
 	top: 132px;
     right: 0px;
-    background-color: #000080;
+    background-color: rgb(0, 0, 128);
     opacity: .6;
 }
 
 .catchyPhrase {
-    z-index: 1;
-    width: 300px;
-    height: 81px;
+    z-index: 5;
+    width: 450px;
+    height: 275px;
 	position: absolute;
-	top: 400px;
-    right: 15px;
+	top: 300px;
+    right: 50px;
     color: #fff;
-    font-size: 50px;
+    font-size: 30px;
     margin: 0;
     padding: 0;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+   
+}
+
+
+.catchyPhraseBackground {
+    z-index: 2;
+    width: 450px;
+    height: 275px;
+	position: absolute;
+	top: 300px;
+    right: 50px;
+    background-color: rgb(0, 0, 128);
+    opacity: .4;
+}
+
+.catchyPhrase p {
+   line-height: 40px;
 }
 
 /*Login Modal*/
@@ -374,7 +472,7 @@ datepicker input {
      text-align:center;
      z-index: 1000;
      background-color: rgba(0, 0, 128, .5);
-     font-family: Arial, Helvetica, sans-serif;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
      font-size: 18px;
      display: flex;
      flex-direction: row;
@@ -412,7 +510,7 @@ datepicker input {
      text-align:center;
      z-index: 1000;
      background-color: rgba(0, 0, 128, .5);
-     font-family: Arial, Helvetica, sans-serif;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
      font-size: 18px;
      display: flex;
      flex-direction: row;
@@ -454,7 +552,7 @@ datepicker input {
      text-align:center;
      z-index: 1000;
      background-color: rgba(0, 0, 128, .5);
-     font-family: Arial, Helvetica, sans-serif;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
      font-size: 18px;
      display: flex;
      flex-direction: row;
@@ -482,7 +580,7 @@ datepicker input {
 }
 
 .modalLabel {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
     color: rgb(0, 0, 128);
     margin-bottom: 5px;
@@ -554,15 +652,14 @@ datepicker input {
     height: auto;
     overflow-y: auto;
     display: flex;
+    min-height: 1000px;
+    justify-content: space-around;
 }
 
 .modifySearch {
     display: flex;
     flex-direction: row;
     width: 270px;
-	position: absolute;
-    right: 50px;
-	top: 100px;
 	justify-content: center;
     margin-bottom: 20px;
 }
@@ -597,7 +694,7 @@ datepicker input {
      text-align:center;
      z-index: 1000;
      background-color: rgba(0, 0, 128, .5);
-     font-family: Arial, Helvetica, sans-serif;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
      font-size: 18px;
      display: flex;
      flex-direction: row;
@@ -632,9 +729,7 @@ datepicker input {
 
 .listWrapper {
 	height: 100%;
-	position: relative;
-	left: 20px;
-	top: 100px;
+	margin-top: 100px;
 	justify-content: flex-start;
 }
 
@@ -706,7 +801,7 @@ datepicker input {
 .column {
 	display: flex;
 	flex-direction: column;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	font-size: 14px;
 	text-align: left;
 	width: 130px;
@@ -756,8 +851,15 @@ datepicker input {
 }
 
 .bold {
-	font-weight: bold;
+    font-weight: bold;
+    text-overflow: clip;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1
 }
+
+
 
 .bigCell {
 	display: flex;
@@ -811,9 +913,6 @@ div p {
 	display: flex;
 	flex-direction: column;
 	align-content: flex-start;
-	position: absolute;
-	right: 50px;
-	top: 175px;
 	min-height: 300px;
 	width: 270px;
     border: 1px solid #fff;
@@ -822,10 +921,20 @@ div p {
 	opacity: .9;
 }
 
+
+.filterSection {
+    display: flex;
+	flex-direction: column;
+	align-content: flex-start;
+	margin-top: 150px;
+	min-height: 400px;
+	width: 270px;
+}
+
 .filterLabel {
 	font-size: 20px;
 	font-weight: bold;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	color: white;
 	background-color: rgb(0, 0, 128);
 	margin-bottom: 5px;
@@ -845,7 +954,7 @@ div p {
 .originFilter, .airlineFilter {
 	font-size: 16px;
 	font-weight: bold;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -889,6 +998,7 @@ div p {
 
 .airlineChip div {
     line-height: 30px;
+    overflow: hidden;
 }
 
 /*/////////////////////////
@@ -930,7 +1040,7 @@ div p {
     justify-content: space-around;
     line-height: 25px;
     font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #FFF;
     background-color: rgb(0, 0, 128);
     border: 1px solid rgb(0, 0, 128);
@@ -987,7 +1097,7 @@ div p {
 
 
 .tripNameLabel {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 40px;
     text-align: center;
     color: rgb(0, 0, 128);
@@ -1002,13 +1112,13 @@ div p {
 }
 
 .selectATrip {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 40px;
     color: rgb(0, 0, 128);
 }
 
 .selectATripMenuLabel {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 30px;
     text-align: center;
     color: rgb(0, 0, 128);

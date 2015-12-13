@@ -3,9 +3,7 @@
 
 <div class="pageWrapper">
 
-	<div class="modifySearch">
-		<input type="button" class="modifySearchButton" value="Modify Search" ng-click="showHideModifySearchModal()" />
-	</div>
+
 
 	<div class="listWrapper">
 
@@ -19,7 +17,7 @@
 							<div class="tripLabel" ng-show="isShown('roundtrip')">Outbound</div>
 							<div ng-repeat="segment in listing.slice[0].segment">
 								<div ng-repeat="leg in segment.leg">
-									<div class="secondRow bold">{{leg.origin}}</div>
+									<div class="secondRow bold">{{leg.originName}} ({{leg.origin}})</div>
 									<div class="thirdRow">{{leg.cleanDepartureTime | date: 'h:mm a' }}</div>
 									<div class="fourthRow">{{leg.cleanDepartureTime | date: 'MMM d, y'}}</div>
 								</div>
@@ -33,7 +31,7 @@
 							</div>
 							<div ng-repeat="segment in listing.slice[0].segment">
 								<div ng-repeat="leg in segment.leg">
-									<div class="secondRow bold">{{leg.destination}}</div>
+									<div class="secondRow bold">{{leg.destinationName}} ({{leg.destination}})</div>
 									<div class="thirdRow">{{leg.cleanArrivalTime | date: 'h:mm a'}}</div>
 									<div class="fourthRow">{{leg.cleanArrivalTime | date: 'MMM d, y'}}</div>
 								</div>
@@ -46,7 +44,7 @@
 								<br>
 							</div>
 							<div ng-repeat="segment in listing.slice[0].segment">
-								<div class="secondRow bold">{{segment.flight.carrier}}</div>
+								<div class="secondRow bold carrierName">{{segment.flight.carrier}}</div>
 								<div class="thirdRow">{{segment.flight.number}}</div>
 								<div class="fourthRow">
 									<br>
@@ -81,7 +79,7 @@
 							<div class="tripLabel">Return</div>
 							<div ng-repeat="segment in listing.slice[1].segment">
 								<div ng-repeat="leg in segment.leg">
-									<div class="secondRow bold">{{leg.origin}}</div>
+									<div class="secondRow bold">{{leg.originName}} ({{leg.origin}})</div>
 									<div class="thirdRow">{{leg.cleanDepartureTime | date: 'h:mm a' }}</div>
 									<div class="fourthRow">{{leg.cleanDepartureTime | date: 'MMM d, y'}}</div>
 								</div>
@@ -94,7 +92,7 @@
 							</div>
 							<div ng-repeat="segment in listing.slice[1].segment">
 								<div ng-repeat="leg in segment.leg">
-									<div class="secondRow bold">{{leg.destination}}</div>
+									<div class="secondRow bold">{{leg.destinationName}} ({{leg.destination}})</div>
 									<div class="thirdRow">{{leg.cleanArrivalTime | date: 'h:mm a'}}</div>
 									<div class="fourthRow">{{leg.cleanArrivalTime | date: 'MMM d, y'}}</div>
 								</div>
@@ -168,12 +166,15 @@
 
 
 	</div>
-	
-</div>
 
-
-<!---------------Filter-------------------->
+	<!---------------Filter-------------------->
+	<div class="filterSection">
+		
+		<div class="modifySearch">
+			<input type="button" class="modifySearchButton" value="Modify Search" ng-click="showHideModifySearchModal()" />
+		</div>
 	<div class="filterWrapper">
+		
 		<div class="filterLabel">Filter Search Results</div>
 		<div class="filters">
 			<div class="originFilter">
@@ -190,7 +191,8 @@
 			<div class="airlineFilter">
 				<div class="smallFilterLabel">Airline</div>
 				<div class="chipSection">
-					<div class="airlineChip" ng-repeat="airline in searchResults.airlines track by $index" ng-class="{isBlue: airline.on, isBlack: !airline.on}" ng-click="airline.on = !airline.on">
+					<div class="airlineChip" ng-repeat="airline in searchResults.airlines track by $index" ng-class="{isBlue: airline.on, isBlack: !airline.on}"
+					ng-click="airline.on = !airline.on">
 						<div>{{airline.name}}</div>
 					</div>
 				</div>
@@ -199,6 +201,10 @@
 
 		</div>
 	</div>
+	</div>
+</div>
+
+
 
 <!---------------------Save to Trip Modal------------------------->
 

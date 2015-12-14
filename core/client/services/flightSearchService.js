@@ -282,11 +282,12 @@ function FlightSearchService($http, $state, $location) {
 	//win key: AIzaSyCL0ZLFUF5_SsrocXX6ZKSaRlonngvd9cE
 	//my key: AIzaSyAFEjs778GYWjvMrYyuzPLk5eLAqtqLfdA
 	//daniel law key: AIzaSyAfUeKttBcaUk-jAIpc9jMURjQ8V0FCBEs
+	//daniel: AIzaSyB3MeyW8mVYr_EaRtxP_Dm4XWta4GX57pY
 	
 	
 	//////HTTP POST request for flight info//////////////////////////////////
 	function submitGoogleSearch(searchBody, userInput) {
-		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAFSQP3ClWoPPShBYApLfxjazl-1WsKpu8';
+		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyB3MeyW8mVYr_EaRtxP_Dm4XWta4GX57pY';
 		return $http.post(endpoint, searchBody).then(function (response) {
 			return { header: response.data.trips.data, tripOptions: response.data.trips.tripOption };
 		}, function errorCallback(response) {

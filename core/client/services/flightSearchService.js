@@ -107,7 +107,9 @@ function FlightSearchService($http, $state, $location) {
 		
 
 			for (var i = 0; i < searchResults.originsAndDestintation.length; i++) {
-				searchResults.originsAndDestintation[i] = { airportCode: searchResults.originsAndDestintation[i] };
+				
+				if (typeof searchResults.originsAndDestintation[i] === "string") {
+					searchResults.originsAndDestintation[i] = { airportCode: searchResults.originsAndDestintation[i] };
 				for (var j = 0; j < results.header.airport.length; j++) {
 					if (results.header.airport[j].code === searchResults.originsAndDestintation[i].airportCode) {
 						searchResults.originsAndDestintation[i].cityCode = results.header.airport[j].city;
@@ -118,6 +120,10 @@ function FlightSearchService($http, $state, $location) {
 						searchResults.originsAndDestintation[i].cityName = results.header.city[k].name;
 					}
 				}
+					
+				}
+				
+				
 
 			}
 
@@ -296,7 +302,7 @@ function FlightSearchService($http, $state, $location) {
 	
 	//////HTTP POST request for flight info//////////////////////////////////
 	function submitGoogleSearch(searchBody, userInput) {
-		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAFEjs778GYWjvMrYyuzPLk5eLAqtqLfdA';
+		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAfUeKttBcaUk-jAIpc9jMURjQ8V0FCBEs';
 		return $http.post(endpoint, searchBody).then(function (response) {
 			return { header: response.data.trips.data, tripOptions: response.data.trips.tripOption };
 		});

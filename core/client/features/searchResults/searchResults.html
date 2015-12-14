@@ -180,7 +180,7 @@
 			<div class="originFilter">
 				<div class="smallFilterLabel">Origin</div>
 				<div class="chipSection">
-					<div class="airlineChip" ng-class="{isBlue: city.on, isBlack: !city.on}" ng-repeat="city in searchResults.originsAndDestintation track by $index"
+					<div class="airlineChip" ng-class="{isBlue: city.on, isBlack: !city.on}" ng-repeat="city in searchResults.cleanOriginsAndDestinations track by $index"
 					ng-click="city.on = !city.on">
 						<div>{{city.cityName}} ({{city.airportCode}})</div>
 					</div>
@@ -191,7 +191,7 @@
 			<div class="airlineFilter">
 				<div class="smallFilterLabel">Airline</div>
 				<div class="chipSection">
-					<div class="airlineChip" ng-repeat="airline in searchResults.airlines track by $index" ng-class="{isBlue: airline.on, isBlack: !airline.on}"
+					<div class="airlineChip" ng-repeat="airline in searchResults.cleanAirlines track by $index" ng-class="{isBlue: airline.on, isBlack: !airline.on}"
 					ng-click="airline.on = !airline.on">
 						<div>{{airline.name}}</div>
 					</div>

@@ -26,16 +26,74 @@ angular.module("skyNautilus")
     //Load search results
     $scope.searchResults = flightSearchService.getFinalSearchResults();
 
-    console.log("REsults in contr", $scope.searchResults);
+   
 
-    for (var city in $scope.searchResults.originsAndDestintation) {
-      $scope.searchResults.originsAndDestintation[city].on = true;
-    }
+    
+    
+    //Remove duplicates from origin and destinations
+    
 
-    for (var airline in $scope.searchResults.airlines) {
-      $scope.searchResults.airlines[airline].on = true;
+      
+    $scope.searchResults.cleanOriginsAndDestinations = [];
+
+    var found;
+
+    for (var x = 0; x < $scope.searchResults.originsAndDestintation.length; x++) {
+        found = undefined;
+        for (var y = 0; y < $scope.searchResults.cleanOriginsAndDestinations.length; y++) {
+          console.log($scope.searchResults.cleanOriginsAndDestinations.length);
+            if ($scope.searchResults.originsAndDestintation[x].airportCode === $scope.searchResults.cleanOriginsAndDestinations[y].airportCode) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            $scope.searchResults.cleanOriginsAndDestinations.push($scope.searchResults.originsAndDestintation[x]);
+        }
     }
     
+    
+    /////
+    
+
+
+    for (var city in $scope.searchResults.cleanOriginsAndDestinations) {
+      $scope.searchResults.cleanOriginsAndDestinations[city].on = true;
+    }
+
+
+
+//Remove duplicates from airlines
+    
+
+      
+    $scope.searchResults.cleanAirlines = [];
+
+    var foundAirline;
+
+    for (var a = 0; a < $scope.searchResults.airlines.length; a++) {
+        foundAirline = undefined;
+        for (var b = 0; b < $scope.searchResults.cleanAirlines.length; b++) {
+    
+            if ($scope.searchResults.airlines[a].code === $scope.searchResults.cleanAirlines[b].code) {
+                foundAirline = true;
+                break;
+            }
+        }
+        if (!foundAirline) {
+            $scope.searchResults.cleanAirlines.push($scope.searchResults.airlines[a]);
+        }
+    }
+
+
+
+
+
+    for (var airline in $scope.searchResults.cleanAirlines) {
+      $scope.searchResults.cleanAirlines[airline].on = true;
+    }
+    
+     console.log("REsults in contr", $scope.searchResults);
 
     //Determines whether to show depart and return labels
     $scope.isShown = function (tripType) {
@@ -145,9 +203,19 @@ angular.module("skyNautilus")
     $scope.limit = 17;
 
     
+    
+    
+    
+    
+    
+    
+    
+    
 
     //Filter
  
+   
+        
         
      
     $scope.filterFunc1 = function (item) {  
@@ -179,7 +247,7 @@ angular.module("skyNautilus")
       }
 
 
-      var excludedCities = $scope.searchResults.originsAndDestintation.filter(function (val) {
+      var excludedCities = $scope.searchResults.cleanOriginsAndDestinations.filter(function (val) {
         return !val.on;
       });
 
@@ -216,7 +284,7 @@ angular.module("skyNautilus")
         }  
       }
 
-      var excludedAirlines = $scope.searchResults.airlines.filter(function (val) {
+      var excludedAirlines = $scope.searchResults.cleanAirlines.filter(function (val) {
         return !val.on;
       });
 

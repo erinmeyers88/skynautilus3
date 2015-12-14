@@ -17,7 +17,7 @@ var TripModel = mongoose.Schema({
 					cleanArrivalTime: { type: Date },
 					cleanDepartureTime: { type: Date },
 					destination: { type: String },
-					destintationName: {type: String},
+					destinationName: {type: String},
 					cleanDuration: { type: String },
 					origin: { type: String },
 					originName: {type: String}

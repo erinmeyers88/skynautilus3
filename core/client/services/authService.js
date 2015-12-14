@@ -8,10 +8,6 @@ angular.module("skyNautilus")
 		});
 	};
 		
-	// this.checkLogin = function () {
-	// 	return $http.get("/checklogin").then(function (response) {
-	// 		return response.data;
-	// 	});
-	// };	
+
 		
 	});

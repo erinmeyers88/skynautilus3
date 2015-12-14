@@ -8,7 +8,7 @@
 					<div class="tripLabel" ng-show="itinerary.roundtrip">Outbound</div>
 					<div ng-repeat="segment in itinerary.slice[0].segment">
 						<div ng-repeat="leg in segment.leg">
-							<div class="secondRow bold">{{leg.origin}}</div>
+							<div class="secondRow bold">{{leg.originName}} ({{leg.origin}})</div>
 							<div class="thirdRow">{{leg.cleanDepartureTime | date: 'h:mm a' }}</div>
 							<div class="fourthRow">{{leg.cleanDepartureTime | date: 'MMM d, y'}}</div>
 						</div>
@@ -22,7 +22,7 @@
 					</div>
 					<div ng-repeat="segment in itinerary.slice[0].segment">
 						<div ng-repeat="leg in segment.leg">
-							<div class="secondRow bold">{{leg.destination}}</div>
+							<div class="secondRow bold">{{leg.destinationName}} ({{leg.destination}})</div>
 							<div class="thirdRow">{{leg.cleanArrivalTime | date: 'h:mm a'}}</div>
 							<div class="fourthRow">{{leg.cleanArrivalTime | date: 'MMM d, y'}}</div>
 						</div>
@@ -70,7 +70,7 @@
 					<div class="tripLabel">Return</div>
 					<div ng-repeat="segment in itinerary.slice[1].segment">
 						<div ng-repeat="leg in segment.leg">
-							<div class="secondRow bold">{{leg.origin}}</div>
+							<div class="secondRow bold">{{leg.originName}} ({{leg.origin}})</div>
 							<div class="thirdRow">{{leg.cleanDepartureTime | date: 'h:mm a' }}</div>
 							<div class="fourthRow">{{leg.cleanDepartureTime | date: 'MMM d, y'}}</div>
 						</div>
@@ -83,7 +83,7 @@
 					</div>
 					<div ng-repeat="segment in itinerary.slice[1].segment">
 						<div ng-repeat="leg in segment.leg">
-							<div class="secondRow bold">{{leg.destination}}</div>
+							<div class="secondRow bold">{{leg.destinationName}} ({{leg.destination}})</div>
 							<div class="thirdRow">{{leg.cleanArrivalTime | date: 'h:mm a'}}</div>
 							<div class="fourthRow">{{leg.cleanArrivalTime | date: 'MMM d, y'}}</div>
 						</div>

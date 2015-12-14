@@ -25,29 +25,6 @@ module.exports = function (app) {
             res.status(200).json(req.user);
         });
 
-    // // FACEBOOK AUTHENTICATION AND REDIRECTION
-    // app.route('/login/facebook')
-    //     .get(passport.authenticate('facebook', {
-    //         scope: ['email']
-    //     }));
-
-    // app.route('/login/facebook/callback')
-    //     .get(passport.authenticate('facebook', {
-    //         successRedirect: '/',
-    //         failure: '/'
-    //     }));
-
-
-    // AUXILIARY ENDPOINTS
-
-    // // checking if logged-in
-    // app.route('/auth/checklogin')
-    //     .get(function (req, res) {
-    //         if (req.user) {
-    //             res.send(req.user);
-    //         }
-    //         else res.send(false);
-    //     });
 
 
     // logging-out
@@ -59,13 +36,5 @@ module.exports = function (app) {
         });
 
 
-    // // protecting routes
-    // app.route('/notallowed')
-    //     .get(function (req, res, next) {
-    //         if (!req.user) {
-    //             res.redirect('/');
-    //         }
-    //         next();
-    //     });
 
 };

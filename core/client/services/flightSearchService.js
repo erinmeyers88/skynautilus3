@@ -155,27 +155,6 @@ function FlightSearchService($http, $state, $location) {
 
 
 			
-			
-			
-		
-			// //airlines//
-			
-			// var airlineCodes = {
-			// 	AS: "Alaska",
-			// 	US: "US Air",
-			// 	VX: "Virgin America",
-			// 	B6: "Jet Blue",
-			// 	UA: "United",
-			// 	WS: "WestJet",
-			// 	NK: "Spirit",
-			// 	F9: "Frontier"
-			// };
-
-			// results.header.carrier.forEach(function (airline) {
-			// 	airline.code = airline.code.replace(/AS|US|VX|B6|UA|WS|NK|F9/gi, function (code) {
-			// 		return airlineCodes[code];
-			// 	});
-			// });
 
 			searchResults.airlines = searchResults.airlines.concat(results.header.carrier);
 
@@ -303,7 +282,7 @@ function FlightSearchService($http, $state, $location) {
 	
 	//////HTTP POST request for flight info//////////////////////////////////
 	function submitGoogleSearch(searchBody, userInput) {
-		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCL0ZLFUF5_SsrocXX6ZKSaRlonngvd9cE';
+		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAfUeKttBcaUk-jAIpc9jMURjQ8V0FCBEs';
 		return $http.post(endpoint, searchBody).then(function (response) {
 			return { header: response.data.trips.data, tripOptions: response.data.trips.tripOption };
 		});

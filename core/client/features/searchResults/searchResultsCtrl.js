@@ -48,6 +48,7 @@ angular.module("skyNautilus")
             }
         }
         if (!found) {
+ 
             $scope.searchResults.cleanOriginsAndDestinations.push($scope.searchResults.originsAndDestintation[x]);
         }
     }
@@ -81,6 +82,12 @@ angular.module("skyNautilus")
             }
         }
         if (!foundAirline) {
+          
+          $scope.searchResults.airlines[a].name = $scope.searchResults.airlines[a].name.replace(",", "");
+          $scope.searchResults.airlines[a].name = $scope.searchResults.airlines[a].name.replace("Inc.", "");
+          $scope.searchResults.airlines[a].name = $scope.searchResults.airlines[a].name.replace("Co.", "");
+          $scope.searchResults.airlines[a].name = $scope.searchResults.airlines[a].name.replace("Ltd.", "");
+          
             $scope.searchResults.cleanAirlines.push($scope.searchResults.airlines[a]);
         }
     }
@@ -203,34 +210,27 @@ angular.module("skyNautilus")
     $scope.limit = 17;
 
     
-    
-    
-    
-    
-    
-    
-    
-    
+ 
 
     //Filter
  
    
-        
-        
      
     $scope.filterFunc1 = function (item) {  
       if ($scope.searchResults.tripType === "roundtrip") {
 
         var destinations = [];
         
-        for (var i = 0; i < item.slice[0].segment.length -1; i++) { 
+        for (var i = 0; i < item.slice[0].segment.length; i++) { 
           for (var j = 0; j < item.slice[0].segment[i].leg.length; j++) {
+            destinations.push(item.slice[0].segment[i].leg[j].origin);
             destinations.push(item.slice[0].segment[i].leg[j].destination);
           }     
         }
         
-        for (var i = 0; i < item.slice[1].segment.length -1; i++) {
+        for (var i = 0; i < item.slice[1].segment.length; i++) {
           for (var j = 0; j < item.slice[1].segment[i].leg.length; j++) {
+            destinations.push(item.slice[1].segment[i].leg[j].origin);
             destinations.push(item.slice[1].segment[i].leg[j].destination);
           }     
         }
@@ -239,8 +239,9 @@ angular.module("skyNautilus")
         
         var destinations = [];
         
-         for (var i = 0; i < item.slice[0].segment.length -1; i++) { 
+         for (var i = 0; i < item.slice[0].segment.length; i++) { 
           for (var j = 0; j < item.slice[0].segment[i].leg.length; j++) {
+            destinations.push(item.slice[0].segment[i].leg[j].origin);
             destinations.push(item.slice[0].segment[i].leg[j].destination);
           }     
         }
@@ -265,12 +266,14 @@ angular.module("skyNautilus")
         
         for (var i = 0; i < item.slice[0].segment.length; i++) { 
           for (var j = 0; j < item.slice[0].segment[i].leg.length; j++) {
+     
             airlines.push(item.slice[0].segment[i].flight.carrier);
           }     
         }
         
            for (var i = 0; i < item.slice[1].segment.length; i++) { 
           for (var j = 0; j < item.slice[1].segment[i].leg.length; j++) {
+     
             airlines.push(item.slice[1].segment[i].flight.carrier);
           }     
         }      
@@ -279,6 +282,7 @@ angular.module("skyNautilus")
         var airlines = [];
         for (var i = 0; i < item.slice[0].segment.length; i++) { 
           for (var j = 0; j < item.slice[0].segment[i].leg.length; j++) {
+        
             airlines.push(item.slice[0].segment[i].flight.carrier);
           }     
         }  

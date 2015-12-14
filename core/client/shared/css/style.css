@@ -130,9 +130,9 @@ datepicker select, datepicker select:focus, datepicker select:hover,
 #######################################*/
 
 .backgroundImage {
-	height: 40%;
+	height: 47%;
 	width: 100%;
-	background-image: url("/shared/img/nautilus2.jpg");
+	background-image: url("/shared/img/nautilusShrunk.jpg");
 	background-size: cover;
 	position: relative;
 
@@ -143,6 +143,10 @@ datepicker select, datepicker select:focus, datepicker select:hover,
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.photoCredit {
+    font-size: 10px;
 }
 
 .firstLayer {
@@ -647,7 +651,7 @@ datepicker input {
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	background-image: url("/shared/img/nautilus1.jpg");
+	background-image: url("/shared/img/water1.jpg");
 	background-repeat: repeat;
     height: auto;
     overflow-y: auto;
@@ -705,7 +709,7 @@ datepicker input {
      position: fixed;
      top: 400px;
      width: 330px;
-     height: 358px;
+     height: 406px;
      background-color: #fff;
      border-radius: 5px;
      padding: 15px;
@@ -1085,7 +1089,7 @@ div p {
     position: relative;
     top: 100px;
     right: 10px;
-    border: 5px solid rgb(0, 0, 128);
+    border: 5px solid #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1100,7 +1104,7 @@ div p {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 40px;
     text-align: center;
-    color: rgb(0, 0, 128);
+    color: #fff;
     margin-bottom: 20px;
 }
 
@@ -1114,15 +1118,22 @@ div p {
 .selectATrip {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 40px;
-    color: rgb(0, 0, 128);
+    color: #fff;
 }
 
 .selectATripMenuLabel {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 30px;
     text-align: center;
-    color: rgb(0, 0, 128);
+    color: #fff;
     position: relative;
-    border-bottom: 1px solid rgb(0, 0, 128);
+    border-bottom: 1px solid #fff;
     padding-bottom: 10px;
+}
+
+.tripBackground {
+    background-image: url("/shared/img/water1.jpg");
+	background-repeat: repeat;
+    overflow-y: auto;
+    min-height: 1500px;
 }

@@ -188,7 +188,8 @@ function FlightSearchService($http, $state, $location) {
 			
 			//Itineraries//
 			results.tripOptions.forEach(function (option1) {
-				option1.saleTotal = option1.saleTotal.replace("USD", "$");
+				option1.saleTotal = option1.saleTotal.replace("USD", "");
+				option1.saleTotal = Number(option1.saleTotal);
 				delete option1.$$hashKey;
 				delete option1.id;
 				delete option1.kind;
@@ -302,7 +303,7 @@ function FlightSearchService($http, $state, $location) {
 	
 	//////HTTP POST request for flight info//////////////////////////////////
 	function submitGoogleSearch(searchBody, userInput) {
-		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAfUeKttBcaUk-jAIpc9jMURjQ8V0FCBEs';
+		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCL0ZLFUF5_SsrocXX6ZKSaRlonngvd9cE';
 		return $http.post(endpoint, searchBody).then(function (response) {
 			return { header: response.data.trips.data, tripOptions: response.data.trips.tripOption };
 		});

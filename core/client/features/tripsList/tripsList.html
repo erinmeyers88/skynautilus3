@@ -8,7 +8,7 @@
 				<div class="tripInfoSection" ng-click="getSelectedTrip(trip)">
 					<div>{{trip.name}}</div>
 					<div ng-repeat="itinerary in trip.itinerary"></div>
-					<div class="tripPrice">${{trip.totalPrice}}</div>
+					<div class="tripPrice">{{trip.totalPrice | currency}}</div>
 				</div>
 				
 				<div class="deleteTripButtonWrapper"><input type="button" class="deleteTrip saveButton" ng-click="deleteTrip(trip._id)" value="Delete"></input></div>

@@ -1,7 +1,6 @@
 angular.module("skyNautilus").controller("homeCtrl", HomeController);
 
 function HomeController($scope, flightSearchService, $state, $http, authService, $location, $q, $timeout, $log) {
-	
   //Get current url
   $scope.url = $location.absUrl();
 

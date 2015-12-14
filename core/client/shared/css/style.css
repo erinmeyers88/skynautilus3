@@ -541,6 +541,44 @@ datepicker input {
      
 }
 
+/*Error Modal*/
+#errorModal {
+     visibility: hidden; 
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background-color: rgba(0, 0, 128, .5);
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     font-size: 18px;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+}
+
+.errorModalInside {
+     width: 300px;
+     height: 150px;
+     position: fixed;
+     top: 200px;
+     background-color: #fff;
+     border: 5px solid rgb(0, 0, 128);
+     border-radius: 5px;
+     padding: 15px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: center;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     
+}
+
 /*#####################################
 ############# Search Results ###############
 #######################################*/

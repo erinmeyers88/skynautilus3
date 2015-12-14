@@ -13,6 +13,7 @@
     "tests"
   ],
   "dependencies": {
-    "angularjs-datepicker": "~0.2.15"
+    "angularjs-datepicker": "~0.2.15",
+    "toastr": "~2.1.2"
   }
 }

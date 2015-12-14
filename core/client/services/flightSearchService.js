@@ -29,6 +29,10 @@ function FlightSearchService($http, $state, $location) {
 		el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
     };
 
+	function showHideErrorModal() {
+		var el = document.getElementById("errorModal");
+		el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+    };
 
 	this.search = function (userInput) {
 
@@ -107,23 +111,23 @@ function FlightSearchService($http, $state, $location) {
 		
 
 			for (var i = 0; i < searchResults.originsAndDestintation.length; i++) {
-				
+
 				if (typeof searchResults.originsAndDestintation[i] === "string") {
 					searchResults.originsAndDestintation[i] = { airportCode: searchResults.originsAndDestintation[i] };
-				for (var j = 0; j < results.header.airport.length; j++) {
-					if (results.header.airport[j].code === searchResults.originsAndDestintation[i].airportCode) {
-						searchResults.originsAndDestintation[i].cityCode = results.header.airport[j].city;
+					for (var j = 0; j < results.header.airport.length; j++) {
+						if (results.header.airport[j].code === searchResults.originsAndDestintation[i].airportCode) {
+							searchResults.originsAndDestintation[i].cityCode = results.header.airport[j].city;
+						}
+					};
+					for (var k = 0; k < results.header.city.length; k++) {
+						if (results.header.city[k].code === searchResults.originsAndDestintation[i].cityCode) {
+							searchResults.originsAndDestintation[i].cityName = results.header.city[k].name;
+						}
 					}
-				};
-				for (var k = 0; k < results.header.city.length; k++) {
-					if (results.header.city[k].code === searchResults.originsAndDestintation[i].cityCode) {
-						searchResults.originsAndDestintation[i].cityName = results.header.city[k].name;
-					}
+
 				}
-					
-				}
-				
-				
+
+
 
 			}
 
@@ -154,7 +158,7 @@ function FlightSearchService($http, $state, $location) {
 			});
 
 
-			
+
 
 			searchResults.airlines = searchResults.airlines.concat(results.header.carrier);
 
@@ -282,9 +286,12 @@ function FlightSearchService($http, $state, $location) {
 	
 	//////HTTP POST request for flight info//////////////////////////////////
 	function submitGoogleSearch(searchBody, userInput) {
-		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAfUeKttBcaUk-jAIpc9jMURjQ8V0FCBEs';
+		var endpoint = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCL0ZLFUF5_SsrocXX6ZKSaRlonngvd9cE';
 		return $http.post(endpoint, searchBody).then(function (response) {
 			return { header: response.data.trips.data, tripOptions: response.data.trips.tripOption };
+		}, function errorCallback(response) {
+			showHideLoadResultsModal();
+			showHideErrorModal();
 		});
 	}
 

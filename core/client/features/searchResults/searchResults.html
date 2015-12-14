@@ -178,7 +178,7 @@
 		<div class="filterLabel">Filter Search Results</div>
 		<div class="filters">
 			<div class="originFilter">
-				<div class="smallFilterLabel">Origin</div>
+				<div class="smallFilterLabel">Cities</div>
 				<div class="chipSection">
 					<div class="airlineChip" ng-class="{isBlue: city.on, isBlack: !city.on}" ng-repeat="city in searchResults.cleanOriginsAndDestinations | orderBy: 'cityName'"
 					ng-click="city.on = !city.on">
@@ -189,7 +189,7 @@
 
 
 			<div class="airlineFilter">
-				<div class="smallFilterLabel">Airline</div>
+				<div class="smallFilterLabel">Airlines</div>
 				<div class="chipSection">
 					<div class="airlineChip" ng-repeat="airline in searchResults.cleanAirlines | orderBy: 'name'" ng-class="{isBlue: airline.on, isBlack: !airline.on}"
 					ng-click="airline.on = !airline.on">
@@ -254,13 +254,45 @@
 					</label>
 				</div>
 				<!--Destination-->
-				<div class="destinationInput">
-					<label>
-						<span>Destination:</span>
-						<input list="airports" type="string" ng-model="destination" class="destination" />
-					</label>
-				</div>
-				<datalist id="airports"></datalist>
+				   <div class="destinationInput">
+                <label>
+                    <span>Destination:</span>
+                    <select name="selection" ng-model="destination" class="destination">
+                        <option value=AMS>Amsterdam, The Netherlands (AMS)</option>
+                        <option value=ATL>Atlanta, United States (ATL)</option>
+                        <option value=BKK>Bangkok, Thailand (BKK)</option>
+                        <option value=PEK>Beijing, China (PEK)</option>
+                        <option value=SIN>Changi, Singapore (SIN)</option>
+                        <option value=CLT>Charlotte, United States (CLT)</option>
+                        <option value=CTU>Chengdu, China (CTU)</option>
+                        <option value=ORD>Chicago, United States (ORD)</option>
+                        <option value=DFW>Dallas-Fort Worth, United States (DFW)</option>
+                        <option value=DEL>Delhi, India (DEL)</option>
+                        <option value=DEN>Denver, United States (DEN)</option>
+                        <option value=DXB>Dubai, United Arab Emirates (DXB)</option>
+                        <option value=FRA>Frankfurt, Germany (FRA)</option>
+                        <option value=CAN>Guangzhou, China (CAN)</option>
+                        <option value=HKG>Hong Kong, China (HKG)</option>
+                        <option value=IST>Istanbul, Turkey (IST)</option>
+                        <option value=CGK>Jakarta, Indonesia (CGK)</option>
+                        <option value=KUL>Kuala Lumpur, Malaysia (KUL)</option>
+                        <option value=LAS>Las Vegas, United States (LAS)</option>
+                        <option value=LHR>London, United Kingdom (LHR)</option>
+                        <option value=LAX>Los Angeles, United States (LAX)</option>
+                        <option value=MIA>Miami, United States (MIA)</option>
+                        <option value=JFK>New York City, United States (JFK)</option>
+                        <option value=CDG>Paris, France (CDG)</option>
+                        <option value=PHX>Phoenix, United States (PHX)</option>
+                        <option value=SFO>San Francisco, United States (SFO)</option>
+                        <option value=GRU>São Paulo, Brazil (GRU)</option>
+                        <option value=ICN>Seoul, South Korea (ICN)</option>
+                        <option value=PVG>Shanghai, China (PVG)</option>
+                        <option value=HND>Tokyo, Japan (HND)</option>
+                    </select>
+                </label>
+            </div>
+				
+				
 				<!--Departure Date-->
 				<div class="dateInput">
 					<label>
@@ -281,7 +313,7 @@
 				<div class="passengerInput">
 					<label>
 						<span>Passengers:</span>
-						<select name="selection" type="number" ng-model="passengerCount">
+						<select name="selection" type="number" ng-model="passengerCount" class="passengerInputDropdown">
 							<option value=1>1</option>
 							<option value=2>2</option>
 							<option value=3>3</option>
@@ -309,6 +341,14 @@
 		<div class="modalLabel">Finding Flights</div>
 		<img src="/shared/img/plane.GIF" alt="">
 	</div>
+</div>
+
+<!---------------------Error Modal------------------------->
+
+<div id="errorModal">
+    <div class="errorModalInside">
+        <div class="modalLabel">Daily search limit exceeded.  Please try again tomorrow.</div>
+    </div>
 </div>
 
 <div class="photoCredit">Photo credit: <a href="http://www.flickr.com/photos/84493444@N00/">williamcho</a> via <a href="http://foter.com/">Foter.com</a> / <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA</a></div>

@@ -689,7 +689,8 @@ datepicker input {
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	background-image: url("/shared/img/water1.jpg");
+	background-image: url("/shared/img/water3.jpg");
+	/*background-color: #0a45b7;*/
 	background-repeat: repeat;
     height: auto;
     overflow-y: auto;
@@ -1125,9 +1126,8 @@ div p {
 
 .selectedTripDiv {
     position: relative;
-    top: 100px;
+    top: 80px;
     right: 10px;
-    border: 5px solid #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1170,8 +1170,10 @@ div p {
 }
 
 .tripBackground {
-    background-image: url("/shared/img/water1.jpg");
-	background-repeat: repeat;
+    background-image: url("/shared/img/water3.jpg");
+	/*background-repeat: repeat;*/
+	background-size: cover;
+	/*background-color: #0a45b7;*/
     overflow-y: auto;
     min-height: 1500px;
 }

@@ -22,6 +22,7 @@ module.exports = function (app) {
 
     app.route("/getautheduser")
         .get(function (req, res) {
+			console.log("here is the user", req.user);
             res.status(200).json(req.user);
         });
 
